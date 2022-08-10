@@ -54,4 +54,43 @@ public class Mascota {
         return morir;
     }
 
+    public Mascota(String nombre, int edad, int aburrimiento, int hambre, int energia, int necesidades, boolean morir) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.aburrimiento = aburrimiento;
+        this.hambre = hambre;
+        this.energia = energia;
+        this.necesidades = necesidades;
+        this.morir = morir;
+    }
+
+    public Mascota(String nombre) {
+        this.nombre = nombre;
+        this.edad = 0;
+        this.aburrimiento = 0;
+        this.hambre = 0;
+        this.energia = 0;
+        this.necesidades = 0;
+        this.morir = false;
+    }
+
+    public Mascota() {
+        this(null, 0, 0, 0, 0, 0, false);
+    }
+
+    public void comer(){
+        
+    }
+    
+    public void dormir(){
+        
+    }
+    
+    public void jugar(){
+        
+    }
+    
+    public void curar(){
+        
+    }
 }
