@@ -75,22 +75,10 @@ public class Mascota {
     }
 
     public Mascota() {
-        this(null, 0, 0, 0, 0, 0, false);
+        this("Default", 0, 0, 0, 0, 0, false);
     }
 
-    public void comer(){
-        
-    }
-    
-    public void dormir(){
-        
-    }
-    
-    public void jugar(){
-        
-    }
-    
-    public void curar(){
+    public void realizarActividad(Actividades actividad){
         
     }
 }
