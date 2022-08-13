@@ -9,9 +9,8 @@ package trabajocolaborativogit;
  * @author josep
  */
 public class Actividades {
-    
+
     private int cantidadAburrimiento;
     private int cantidadEnergia;
-    
-    
+
 }
