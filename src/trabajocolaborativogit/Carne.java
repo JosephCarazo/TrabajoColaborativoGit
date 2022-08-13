@@ -9,5 +9,14 @@ package trabajocolaborativogit;
  * @author Fabricio
  */
 public class Carne extends Alimentos {
-    
+
+    public Carne(String nombre, int calorias) {
+        super(nombre, calorias);
+    }
+
+    public Carne() {
+        this.nombre = "Carne";
+        this.calorias = 50;
+    }
+
 }
