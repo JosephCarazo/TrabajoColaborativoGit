@@ -9,5 +9,12 @@ package trabajocolaborativogit;
  * @author pc
  */
 public class Jarabe extends Medicamento{
+
+    public Jarabe(int cantidadSalud) {
+        super(cantidadSalud);
+    }
     
+    public Jarabe(){
+        this(30);
+    }
 }
