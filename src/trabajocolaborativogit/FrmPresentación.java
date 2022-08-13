@@ -26,15 +26,22 @@ public class FrmPresentación extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
+        lblTexto1 = new javax.swing.JLabel();
         btnPresentadora = new javax.swing.JButton();
         lblFondoPresentacion = new javax.swing.JLabel();
+
+        jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblTexto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/texto1.png"))); // NOI18N
+        getContentPane().add(lblTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
+
         btnPresentadora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Presentadora.png"))); // NOI18N
         btnPresentadora.setContentAreaFilled(false);
-        getContentPane().add(btnPresentadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 40, -1, -1));
+        getContentPane().add(btnPresentadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 100, 470, 550));
 
         lblFondoPresentacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoPresentacion.jpg"))); // NOI18N
         getContentPane().add(lblFondoPresentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, 850, -1));
@@ -79,6 +86,8 @@ public class FrmPresentación extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPresentadora;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblFondoPresentacion;
+    private javax.swing.JLabel lblTexto1;
     // End of variables declaration//GEN-END:variables
 }
