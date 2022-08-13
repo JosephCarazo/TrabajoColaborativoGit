@@ -20,15 +20,20 @@ public class Alimentos {
         this.nombre = nombre;
     }
 
+    public int getCalorias() {
+        return calorias;
+    }
+
     public void setCalorias(int calorias) {
         this.calorias = calorias;
     }
 
-    
-    
-    
-    
-    
+    public Alimentos(String nombre, int calorias) {
+        this.nombre = nombre;
+        this.calorias = calorias;
+    }
+      
+  
 }
 
 
