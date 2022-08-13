@@ -9,5 +9,21 @@ package trabajocolaborativogit;
  * @author josep
  */
 public class Medicamento {
+    private int cantidadSalud;
+
+    public int getCantidadSalud() {
+        return cantidadSalud;
+    }
+
+    public void setCantidadSalud(int cantidadSalud) {
+        this.cantidadSalud = cantidadSalud;
+    }
+
+    public Medicamento(int cantidadSalud) {
+        this.cantidadSalud = cantidadSalud;
+    }
+
+    
+ 
     
 }
