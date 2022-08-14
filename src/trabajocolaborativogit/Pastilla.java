@@ -10,12 +10,14 @@ package trabajocolaborativogit;
  */
 public class Pastilla extends Medicamento {
 
-    public Pastilla(int cantidadSalud) {
-        super(cantidadSalud);
+    public Pastilla(String nombre, int cantidadSalud) {
+        super(nombre, cantidadSalud);
     }
+
+    
   
    public Pastilla() {
-       this(20);
+       this("Pastilla", 20);
    }
     
     

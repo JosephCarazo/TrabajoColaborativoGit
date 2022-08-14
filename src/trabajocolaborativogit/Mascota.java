@@ -18,6 +18,7 @@ public class Mascota {
     private int hambre;
     private int energia;
     private int necesidades;
+    private int salud;
     private boolean morir;
 
     public String getNombre() {
@@ -52,17 +53,22 @@ public class Mascota {
         return necesidades;
     }
 
+    public int getSalud() {
+        return salud;
+    }
+
     public boolean isMorir() {
         return morir;
     }
 
-    public Mascota(String nombre, int edad, int aburrimiento, int hambre, int energia, int necesidades, boolean morir) {
+    public Mascota(String nombre, int edad, int aburrimiento, int hambre, int energia, int necesidades, int salud, boolean morir) {
         this.nombre = nombre;
         this.edad = edad;
         this.aburrimiento = aburrimiento;
         this.hambre = hambre;
         this.energia = energia;
         this.necesidades = necesidades;
+        this.salud = salud;
         this.morir = morir;
     }
 
@@ -73,11 +79,12 @@ public class Mascota {
         this.hambre = 0;
         this.energia = 0;
         this.necesidades = 0;
+        this.salud = 100;
         this.morir = false;
     }
 
     public Mascota() {
-        this("Default", 0, 0, 0, 0, 0, false);
+        this("Default", 0, 0, 0, 0, 0, 100, false);
     }
 
     public void alimentar(Alimentos alimento) {
@@ -101,6 +108,28 @@ public class Mascota {
                 this.hambre = this.hambre + manzana.calorias;
             default:
                 JOptionPane.showMessageDialog(null, "Debe elegir una opción válida", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void curar(Medicamento medicamento) {
+        int opciones = 0;
+
+        switch (opciones) {
+            case 1: 
+                Pocion pocion = new Pocion();
+                this.salud = this.salud + pocion.cantidadSalud;
+            case 2:
+                Inyeccion inyeccion = new Inyeccion();
+                this.salud = this.salud + inyeccion.cantidadSalud;
+            case 3:
+                Jarabe jarabe= new Jarabe();
+                this.salud = this.salud + jarabe.cantidadSalud;  
+            case 4:
+                Pastilla pastilla = new Pastilla();
+                this.salud = this.salud + pastilla.cantidadSalud;
+                
+            default:
+               JOptionPane.showMessageDialog(null, "Debe elegir una opción válida", "ERROR", JOptionPane.ERROR_MESSAGE);      
         }
     }
 }
