@@ -9,7 +9,7 @@ package trabajocolaborativogit;
  * @author Fabricio
  */
 public class Alimentos {
-    protected String nombre;
+    private String nombre;
     protected int calorias;  
 
     public String getNombre() {

@@ -4,6 +4,8 @@
  */
 package trabajocolaborativogit;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Fabricio
@@ -78,7 +80,27 @@ public class Mascota {
         this("Default", 0, 0, 0, 0, 0, false);
     }
 
-    public void realizarActividad(Actividades actividad){
-        
+    public void alimentar(Alimentos alimento) {
+        int opciones = 0;
+
+        switch (opciones) {
+            case 1:
+                Lava lava = new Lava();
+                this.hambre = this.hambre + lava.calorias;
+            case 2:
+                Carne carne = new Carne();
+                this.hambre = this.hambre + carne.calorias;
+            case 3:
+                Huevo huevo = new Huevo();
+                this.hambre = this.hambre + huevo.calorias;
+            case 4:
+                Galleta galleta = new Galleta();
+                this.hambre = this.hambre + galleta.calorias;
+            case 5:
+                Manzana manzana = new Manzana();
+                this.hambre = this.hambre + manzana.calorias;
+            default:
+                JOptionPane.showMessageDialog(null, "Debe elegir una opción válida", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
