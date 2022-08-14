@@ -13,11 +13,9 @@ public class Manzana extends Alimentos {
     public Manzana(String nombre, int calorias) {
         super(nombre, calorias);
     }
-    
-    public Manzana(){
-        this.nombre = "Manzana";        
-        this.calorias = 5;
+
+    public Manzana() {
+        this("Manzana", 5);
     }
-   
-    
+
 }

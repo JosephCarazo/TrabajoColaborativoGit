@@ -15,8 +15,7 @@ public class Carne extends Alimentos {
     }
 
     public Carne() {
-        this.nombre = "Carne";
-        this.calorias = 50;
+        this("Carne", 50);
     }
 
 }
