@@ -10,11 +10,12 @@ package trabajocolaborativogit;
  */
 public class Jarabe extends Medicamento{
 
-    public Jarabe(int cantidadSalud) {
-        super(cantidadSalud);
+    public Jarabe(String nombre, int cantidadSalud) {
+        super(nombre, cantidadSalud);
     }
-    
+
+  
     public Jarabe(){
-        this(30);
+        this("Jarabe", 30);
     }
 }
