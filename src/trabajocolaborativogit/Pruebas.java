@@ -4,7 +4,6 @@
  */
 package trabajocolaborativogit;
 
-import javax.swing.JOptionPane;
 
 /**
  *

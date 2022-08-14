@@ -10,7 +10,29 @@ package trabajocolaborativogit;
  */
 public class Actividades {
 
-    private int cantidadAburrimiento;
-    private int cantidadEnergia;
+    protected int cantidadAburrimiento;
+    protected int cantidadEnergia;
+
+    public int getCantidadAburrimiento() {
+        return cantidadAburrimiento;
+    }
+
+    public void setCantidadAburrimiento(int cantidadAburrimiento) {
+        this.cantidadAburrimiento = cantidadAburrimiento;
+    }
+
+    public int getCantidadEnergia() {
+        return cantidadEnergia;
+    }
+
+    public void setCantidadEnergia(int cantidadEnergia) {
+        this.cantidadEnergia = cantidadEnergia;
+    }
+
+    public Actividades(int cantidadAburrimiento, int cantidadEnergia) {
+        this.cantidadAburrimiento = cantidadAburrimiento;
+        this.cantidadEnergia = cantidadEnergia;
+
+    }
 
 }

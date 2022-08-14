@@ -19,6 +19,7 @@ public class Mascota {
     private int energia;
     private int necesidades;
     private boolean morir;
+    private boolean cansado;
 
     public String getNombre() {
         return nombre;
@@ -56,7 +57,13 @@ public class Mascota {
         return morir;
     }
 
-    public Mascota(String nombre, int edad, int aburrimiento, int hambre, int energia, int necesidades, boolean morir) {
+    public boolean isCansado() {
+        return cansado;
+    }
+    
+    
+
+    public Mascota(String nombre, int edad, int aburrimiento, int hambre, int energia, int necesidades, boolean morir, boolean cansado) {
         this.nombre = nombre;
         this.edad = edad;
         this.aburrimiento = aburrimiento;
@@ -64,6 +71,7 @@ public class Mascota {
         this.energia = energia;
         this.necesidades = necesidades;
         this.morir = morir;
+        this.cansado = cansado;
     }
 
     public Mascota(String nombre) {
@@ -74,10 +82,11 @@ public class Mascota {
         this.energia = 0;
         this.necesidades = 0;
         this.morir = false;
+        this.cansado = false;
     }
 
     public Mascota() {
-        this("Default", 0, 0, 0, 0, 0, false);
+        this("Default", 0, 0, 0, 0, 0, false, false);
     }
 
     public void alimentar(Alimentos alimento) {
