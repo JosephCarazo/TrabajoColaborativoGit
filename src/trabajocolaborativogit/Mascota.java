@@ -65,8 +65,6 @@ public class Mascota {
     public boolean isCansado() {
         return cansado;
     }
-    
-    
 
     public Mascota(String nombre, int edad, int aburrimiento, int hambre, int energia, int necesidades, int salud, boolean morir, boolean cansado) {
         this.nombre = nombre;
@@ -124,21 +122,33 @@ public class Mascota {
         int opciones = 0;
 
         switch (opciones) {
-            case 1: 
+            case 1:
                 Pocion pocion = new Pocion();
                 this.salud = this.salud + pocion.cantidadSalud;
+                if (this.salud == 100) {
+                    this.salud = this.salud - pocion.cantidadSalud;
+                }
             case 2:
                 Inyeccion inyeccion = new Inyeccion();
                 this.salud = this.salud + inyeccion.cantidadSalud;
+                if (this.salud == 100) {
+                    this.salud = this.salud - inyeccion.cantidadSalud;
+                }
             case 3:
-                Jarabe jarabe= new Jarabe();
-                this.salud = this.salud + jarabe.cantidadSalud;  
+                Jarabe jarabe = new Jarabe();
+                this.salud = this.salud + jarabe.cantidadSalud;
+                if (this.salud == 100) {
+                    this.salud = this.salud - jarabe.cantidadSalud;
+                }
             case 4:
                 Pastilla pastilla = new Pastilla();
                 this.salud = this.salud + pastilla.cantidadSalud;
-                
+                if (this.salud == 100) {
+                    this.salud = this.salud - pastilla.cantidadSalud;
+                }
+
             default:
-               JOptionPane.showMessageDialog(null, "Debe elegir una opción válida", "ERROR", JOptionPane.ERROR_MESSAGE);      
+                JOptionPane.showMessageDialog(null, "Debe elegir una opción válida", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
