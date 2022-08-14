@@ -10,11 +10,11 @@ package trabajocolaborativogit;
  */
 public class Futbol extends Actividades {
 
-    public Futbol(int cantidadAburrimiento, int cantidadEnergia) {
-        super(cantidadAburrimiento, cantidadEnergia);
+    public Futbol(int cantidadAburrimiento, int cantidadEnergia, int tiempo) {
+        super(cantidadAburrimiento, cantidadEnergia, tiempo);
     }
 
     public Futbol() {
-        this(-60, -30);
+        this(-60, -30, 0);
     }
 }

@@ -10,11 +10,11 @@ package trabajocolaborativogit;
  */
 public class Caminar extends Actividades {
 
-    public Caminar(int cantidadAburrimiento, int cantidadEnergia) {
-        super(cantidadAburrimiento, cantidadEnergia);
+    public Caminar(int cantidadAburrimiento, int cantidadEnergia, int tiempo) {
+        super(cantidadAburrimiento, cantidadEnergia, tiempo);
     }
 
     public Caminar() {
-        this(-10, -3);
+        this(-10, -3, 0);
     }
 }

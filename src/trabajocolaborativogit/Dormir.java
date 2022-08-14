@@ -10,4 +10,11 @@ package trabajocolaborativogit;
  */
 public class Dormir extends Actividades {
     
+    public Dormir(int cantidadAburrimiento, int cantidadEnergia, int tiempo) {
+        super(cantidadAburrimiento, cantidadEnergia, tiempo);
+    }
+
+    public Dormir() {
+        this(-10, 0, 0);
+    }
 }

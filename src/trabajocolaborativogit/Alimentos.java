@@ -9,8 +9,10 @@ package trabajocolaborativogit;
  * @author Fabricio
  */
 public class Alimentos {
+
     private String nombre;
-    protected int calorias;  
+    protected int calorias;
+    protected int tiempo;
 
     public String getNombre() {
         return nombre;
@@ -28,15 +30,18 @@ public class Alimentos {
         this.calorias = calorias;
     }
 
-    public Alimentos(String nombre, int calorias) {
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
+    public Alimentos(String nombre, int calorias, int tiempo) {
         this.nombre = nombre;
         this.calorias = calorias;
+        this.tiempo = tiempo;
     }
-      
-  
+
 }
-
-
-
-
-

@@ -10,11 +10,11 @@ package trabajocolaborativogit;
  */
 public class Carro extends Actividades {
 
-    public Carro(int cantidadAburrimiento, int cantidadEnergia) {
-        super(cantidadAburrimiento, cantidadEnergia);
+    public Carro(int cantidadAburrimiento, int cantidadEnergia, int tiempo) {
+        super(cantidadAburrimiento, cantidadEnergia, tiempo);
     }
     
     public Carro(){
-        this(-15, -5);
+        this(-15, -5, 0);
     }
 }

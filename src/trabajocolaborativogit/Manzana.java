@@ -10,12 +10,12 @@ package trabajocolaborativogit;
  */
 public class Manzana extends Alimentos {
 
-    public Manzana(String nombre, int calorias) {
-        super(nombre, calorias);
+    public Manzana(String nombre, int calorias, int tiempo) {
+        super(nombre, calorias, tiempo);
     }
 
     public Manzana() {
-        this("Manzana", 5);
+        this("Manzana", 5, 0);
     }
 
 }

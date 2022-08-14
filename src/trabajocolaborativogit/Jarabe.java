@@ -8,14 +8,13 @@ package trabajocolaborativogit;
  *
  * @author pc
  */
-public class Jarabe extends Medicamento{
+public class Jarabe extends Medicamento {
 
-    public Jarabe(String nombre, int cantidadSalud) {
-        super(nombre, cantidadSalud);
+    public Jarabe(String nombre, int cantidadSalud, int tiempo) {
+        super(nombre, cantidadSalud, tiempo);
     }
 
-  
-    public Jarabe(){
-        this("Jarabe", 30);
+    public Jarabe() {
+        this("Jarabe", 30, 0);
     }
 }

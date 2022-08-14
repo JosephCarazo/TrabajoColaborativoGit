@@ -12,6 +12,7 @@ public class Actividades {
 
     protected int cantidadAburrimiento;
     protected int cantidadEnergia;
+    protected int tiempo;
 
     public int getCantidadAburrimiento() {
         return cantidadAburrimiento;
@@ -29,10 +30,18 @@ public class Actividades {
         this.cantidadEnergia = cantidadEnergia;
     }
 
-    public Actividades(int cantidadAburrimiento, int cantidadEnergia) {
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
+    public Actividades(int cantidadAburrimiento, int cantidadEnergia, int tiempo) {
         this.cantidadAburrimiento = cantidadAburrimiento;
         this.cantidadEnergia = cantidadEnergia;
-
+        this.tiempo = tiempo;
     }
 
 }

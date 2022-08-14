@@ -9,8 +9,10 @@ package trabajocolaborativogit;
  * @author josep
  */
 public class Medicamento {
+
     private String nombre;
     protected int cantidadSalud;
+    protected int tiempo;
 
     public String getNombre() {
         return nombre;
@@ -28,11 +30,18 @@ public class Medicamento {
         this.cantidadSalud = cantidadSalud;
     }
 
-    public Medicamento(String nombre, int cantidadSalud) {
-        this.nombre = nombre;
-        this.cantidadSalud = cantidadSalud;
+    public int getTiempo() {
+        return tiempo;
     }
 
-   
-    
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
+    public Medicamento(String nombre, int cantidadSalud, int tiempo) {
+        this.nombre = nombre;
+        this.cantidadSalud = cantidadSalud;
+        this.tiempo = tiempo;
+    }
+
 }
