@@ -9,5 +9,13 @@ package trabajocolaborativogit;
  * @author pc
  */
 public class Pocion extends Medicamento {
+
+    public Pocion(int cantidadSalud) {
+        super(cantidadSalud);
+    }
+    
+    public Pocion(){
+        this(100);
+    }
     
 }

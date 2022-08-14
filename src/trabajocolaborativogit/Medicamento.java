@@ -9,7 +9,7 @@ package trabajocolaborativogit;
  * @author josep
  */
 public class Medicamento {
-    private int cantidadSalud;
+    protected int cantidadSalud;
 
     public int getCantidadSalud() {
         return cantidadSalud;
