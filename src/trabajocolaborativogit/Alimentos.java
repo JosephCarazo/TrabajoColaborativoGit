@@ -12,6 +12,7 @@ public class Alimentos {
 
     private String nombre;
     protected int calorias;
+    protected int energia;
     protected int tiempo;
 
     public String getNombre() {
@@ -30,6 +31,14 @@ public class Alimentos {
         this.calorias = calorias;
     }
 
+    public int getEnergia() {
+        return energia;
+    }
+
+    public void setEnergia(int energia) {
+        this.energia = energia;
+    }
+
     public int getTiempo() {
         return tiempo;
     }
@@ -38,9 +47,10 @@ public class Alimentos {
         this.tiempo = tiempo;
     }
 
-    public Alimentos(String nombre, int calorias, int tiempo) {
+    public Alimentos(String nombre, int calorias, int energia,int tiempo) {
         this.nombre = nombre;
         this.calorias = calorias;
+        this.energia = energia;
         this.tiempo = tiempo;
     }
 

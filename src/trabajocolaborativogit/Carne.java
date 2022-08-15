@@ -10,12 +10,12 @@ package trabajocolaborativogit;
  */
 public class Carne extends Alimentos {
 
-    public Carne(String nombre, int calorias, int tiempo) {
-        super(nombre, calorias, tiempo);
+    public Carne(String nombre, int calorias, int energia, int tiempo) {
+        super(nombre, calorias, energia, tiempo);
     }
 
     public Carne() {
-        this("Carne", 50, 0);
+        this("Carne", 50, 15, 0);
     }
 
 }

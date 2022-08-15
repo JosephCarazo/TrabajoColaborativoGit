@@ -10,12 +10,12 @@ package trabajocolaborativogit;
  */
 public class Huevo extends Alimentos {
 
-    public Huevo(String nombre, int calorias, int tiempo) {
-        super(nombre, calorias, tiempo);
+    public Huevo(String nombre, int calorias, int energia, int tiempo) {
+        super(nombre, calorias, energia, tiempo);
     }
 
     public Huevo() {
-        this("Huevo", 20, 0);
+        this("Huevo", 20, 8, 0);
     }
 
 }

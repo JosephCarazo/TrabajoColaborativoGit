@@ -15,6 +15,7 @@ public class FrmInicio extends javax.swing.JFrame {
      */
     public FrmInicio() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -26,16 +27,52 @@ public class FrmInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblStart = new javax.swing.JLabel();
+        btnStart = new javax.swing.JButton();
+        lblPulsa = new javax.swing.JLabel();
+        lblFondo = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoInicio.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 650));
+        lblStart.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblStart.setForeground(new java.awt.Color(255, 255, 255));
+        lblStart.setText("START");
+        getContentPane().add(lblStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
+
+        btnStart.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        btnStart.setForeground(new java.awt.Color(255, 255, 255));
+        btnStart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/start.png"))); // NOI18N
+        btnStart.setContentAreaFilled(false);
+        btnStart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnStart.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/startPeq.png"))); // NOI18N
+        btnStart.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/startPeq.png"))); // NOI18N
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 62, 440, 130));
+
+        lblPulsa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblPulsa.setForeground(new java.awt.Color(255, 255, 255));
+        lblPulsa.setText("PULSA START");
+        getContentPane().add(lblPulsa, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 140, 20));
+
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoInicio.jpg"))); // NOI18N
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        FrmPresentacion presentacion = new FrmPresentacion();
+        presentacion.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnStartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,6 +110,10 @@ public class FrmInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnStart;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblPulsa;
+    private javax.swing.JLabel lblStart;
     // End of variables declaration//GEN-END:variables
 }

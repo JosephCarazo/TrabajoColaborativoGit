@@ -10,12 +10,12 @@ package trabajocolaborativogit;
  */
 public class Galleta extends Alimentos {
 
-    public Galleta(String nombre, int calorias, int tiempo) {
-        super(nombre, calorias, tiempo);
+    public Galleta(String nombre, int calorias, int energia, int tiempo) {
+        super(nombre, calorias, energia, tiempo);
     }
 
     public Galleta() {
-        this("Galleta", 10, 0);
+        this("Galleta", 10, 3, 0);
     }
 
 }

@@ -10,12 +10,12 @@ package trabajocolaborativogit;
  */
 public class Lava extends Alimentos {
 
-    public Lava(String nombre, int calorias, int tiempo) {
-        super(nombre, calorias, tiempo);
+    public Lava(String nombre, int calorias, int energia, int tiempo) {
+        super(nombre, calorias, energia, tiempo);
     }
 
     public Lava() {
-        this("Lava", 100, 0);
+        this("Lava", 100, 60, 0);
     }
 
 }
