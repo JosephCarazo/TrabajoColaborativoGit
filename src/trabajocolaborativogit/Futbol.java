@@ -15,6 +15,6 @@ public class Futbol extends Actividades {
     }
 
     public Futbol() {
-        this(-60, -30, 0);
+        this(60, 30, 0);
     }
 }

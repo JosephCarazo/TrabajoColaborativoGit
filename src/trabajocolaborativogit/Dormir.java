@@ -15,6 +15,6 @@ public class Dormir extends Actividades {
     }
 
     public Dormir() {
-        this(-10, 0, 0);
+        this(10, -40, 0);
     }
 }

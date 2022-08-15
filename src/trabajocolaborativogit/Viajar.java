@@ -8,13 +8,13 @@ package trabajocolaborativogit;
  *
  * @author josep
  */
-public class Piscina extends Actividades {
+public class Viajar extends Actividades {
 
-    public Piscina(int cantidadAburrimiento, int cantidadEnergia, int tiempo) {
+    public Viajar(int cantidadAburrimiento, int cantidadEnergia, int tiempo) {
         super(cantidadAburrimiento, cantidadEnergia, tiempo);
     }
     
-    public Piscina(){
-        this(-40, -15, 0);
+    public Viajar(){
+        this(-15, -5, 0);
     }
 }

@@ -83,7 +83,7 @@ public class Mascota {
         this.edad = 0;
         this.aburrimiento = 0;
         this.hambre = 0;
-        this.energia = 0;
+        this.energia = 100;
         this.necesidades = 0;
         this.salud = 100;
         this.morir = false;
@@ -91,64 +91,33 @@ public class Mascota {
     }
 
     public Mascota() {
-        this("Default", 0, 0, 0, 0, 0, 100, false, false);
+        this("Default", 0, 100, 100, 100, 0, 100, false, false);
     }
 
     public void alimentar(Alimentos alimento) {
-        int opciones = 0;
-
-        switch (opciones) {
-            case 1:
-                Lava lava = new Lava();
-                this.hambre = this.hambre + lava.calorias;
-            case 2:
-                Carne carne = new Carne();
-                this.hambre = this.hambre + carne.calorias;
-            case 3:
-                Huevo huevo = new Huevo();
-                this.hambre = this.hambre + huevo.calorias;
-            case 4:
-                Galleta galleta = new Galleta();
-                this.hambre = this.hambre + galleta.calorias;
-            case 5:
-                Manzana manzana = new Manzana();
-                this.hambre = this.hambre + manzana.calorias;
-            default:
-                JOptionPane.showMessageDialog(null, "Debe elegir una opción válida", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+        this.hambre -= alimento.calorias;
     }
 
     public void curar(Medicamento medicamento) {
-        int opciones = 0;
-
-        switch (opciones) {
-            case 1:
-                Pocion pocion = new Pocion();
-                this.salud = this.salud + pocion.cantidadSalud;
-                if (this.salud == 100) {
-                    this.salud = this.salud - pocion.cantidadSalud;
-                }
-            case 2:
-                Inyeccion inyeccion = new Inyeccion();
-                this.salud = this.salud + inyeccion.cantidadSalud;
-                if (this.salud == 100) {
-                    this.salud = this.salud - inyeccion.cantidadSalud;
-                }
-            case 3:
-                Jarabe jarabe = new Jarabe();
-                this.salud = this.salud + jarabe.cantidadSalud;
-                if (this.salud == 100) {
-                    this.salud = this.salud - jarabe.cantidadSalud;
-                }
-            case 4:
-                Pastilla pastilla = new Pastilla();
-                this.salud = this.salud + pastilla.cantidadSalud;
-                if (this.salud == 100) {
-                    this.salud = this.salud - pastilla.cantidadSalud;
-                }
-
-            default:
-                JOptionPane.showMessageDialog(null, "Debe elegir una opción válida", "ERROR", JOptionPane.ERROR_MESSAGE);
+        if (this.salud == 100) {
+            this.salud -= medicamento.cantidadSalud;
+        }else{
+        this.salud = this.salud + medicamento.cantidadSalud;
         }
     }
+    
+    public void realizarActividad(Actividades actividad){
+        if (this.energia > 100) {
+            this.energia = 100;
+        }
+        this.aburrimiento -= actividad.cantidadAburrimiento;
+        this.energia -= actividad.cantidadEnergia;
+    }
+    
+    @Override
+    public String toString() {
+        return "\n***********" + "\nNombre: " + nombre + "\nEdad: " + edad + "\nAburrimiento: " + aburrimiento + '%' + "\nHambre: " + hambre + '%' + "\nEnergia: " + energia + '%' + "\nNecesidades: " + necesidades+ '%' + "\nSalud: " + salud+ '%' + "\nMorir: " + morir + "\nCansado: " + cansado;
+    }
+    
+    
 }
