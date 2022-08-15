@@ -15,30 +15,29 @@ public class Pruebas {
      */
     public static void main(String[] args) {
         Alimentos manzana = new Manzana();
-        
+
         Medicamento inyeccion = new Inyeccion();
-        
+
         Mascota dragon = new Mascota();
-        
+
         Actividades futbol = new Futbol();
         Actividades dormir = new Dormir();
-        
-        
-        System.out.println(dragon);
+
+        System.out.println("1 "+ dragon);//1
         dragon.alimentar(manzana);
-        System.out.println(dragon);
-        
+        System.out.println("2 "+ dragon);//1
+
         dragon.curar(inyeccion);
-        System.out.println(dragon);
-        
+        System.out.println("3 "+ dragon);//3
+
         dragon.curar(inyeccion);
-        System.out.println(dragon);
-        
+        System.out.println("4 "+ dragon);//4
+
         dragon.realizarActividad(futbol);
-        System.out.println(dragon);
-        
+        System.out.println("5 "+ dragon);//5
+
         dragon.realizarActividad(dormir);
-        System.out.println(dragon);
+        System.out.println("6 "+ dragon);//6
     }
-    
+
 }
