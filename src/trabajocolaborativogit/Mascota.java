@@ -46,14 +46,12 @@ public class Mascota {
         this.salud = salud;
         if (salud > 100) {
             this.salud = 100;
-        }else if (salud < 0) {
+        } else if (salud < 0) {
             this.salud = 0;
-        }
-        if (this.getSalud() <= 20) {
+        }else if (this.salud <= 20) {
             this.setEnfermo(true);
-        }else{
-            this.setEnfermo(false);
         }
+        
     }
 
     public int getAburrimiento() {
@@ -149,7 +147,7 @@ public class Mascota {
     }
 
     public Mascota() {
-        this("Default", 0, 100, 100, 15, 0, 19, false, false, false);
+        this("Default", 0, 100, 100, 15, 0, 0, false, false, false);
     }
 
     public void alimentar(Alimentos alimento) {

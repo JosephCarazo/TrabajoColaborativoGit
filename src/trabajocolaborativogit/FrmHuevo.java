@@ -27,11 +27,19 @@ public class FrmHuevo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        lblPresentadora = new javax.swing.JLabel();
         btnHuevo = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textoHuevo.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, -1, -1));
+
+        lblPresentadora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Presentadora.png"))); // NOI18N
+        getContentPane().add(lblPresentadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, 80, 480, 570));
 
         btnHuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHuevo.setForeground(new java.awt.Color(255, 255, 255));
@@ -48,17 +56,20 @@ public class FrmHuevo extends javax.swing.JFrame {
                 btnHuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, -1, 370));
+        getContentPane().add(btnHuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, -1, 370));
 
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoPrincipal.jpg"))); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoHuevo.jpg"))); // NOI18N
         getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuevoActionPerformed
-//        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoSecundario2.jpg"))); // NOI18N
-//        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        FrmPrincipal principal = new FrmPrincipal();
+        FrmInicio inicio = new FrmInicio();
+        
+        principal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHuevoActionPerformed
 
     /**
@@ -99,6 +110,8 @@ public class FrmHuevo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuevo;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblPresentadora;
     // End of variables declaration//GEN-END:variables
 }

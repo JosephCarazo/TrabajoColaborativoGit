@@ -4,6 +4,7 @@
  */
 package trabajocolaborativogit;
 
+
 /**
  *
  * @author Fabricio
@@ -62,7 +63,7 @@ public class FrmInicio extends javax.swing.JFrame {
         lblPulsa.setText("PULSA START");
         getContentPane().add(lblPulsa, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 140, 20));
 
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoInicio.jpg"))); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/arena.jpg"))); // NOI18N
         getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 650));
 
         pack();
