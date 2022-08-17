@@ -141,7 +141,7 @@ public class Mascota {
     }
 
     public Mascota() {
-        this("Default", 0, 0, 0, 100, 0, true, false);
+        this("Default", 0, 100, 100, 50, 100, true, false);
     }
 
     public void alimentar(Alimentos alimento) {

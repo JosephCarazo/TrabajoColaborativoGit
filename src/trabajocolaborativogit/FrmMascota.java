@@ -15,6 +15,7 @@ import javax.swing.Timer;
 public class FrmMascota extends javax.swing.JFrame {
 
     Mascota dragon;
+    Actividades natacion;
 
     /**
      * Creates new form FrmMascota
@@ -23,6 +24,7 @@ public class FrmMascota extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         dragon = new Mascota();
+        natacion = new Natacion();
         btnLava.setVisible(false);
         btnHuevo.setVisible(false);
         btnCarne.setVisible(false);
@@ -545,7 +547,7 @@ public class FrmMascota extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDormirActionPerformed
 
     private void btnNatacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNatacionActionPerformed
-        // TODO add your handling code here:
+        dragon.realizarActividad(natacion);
     }//GEN-LAST:event_btnNatacionActionPerformed
 
     private void btnActividades2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividades2ActionPerformed
