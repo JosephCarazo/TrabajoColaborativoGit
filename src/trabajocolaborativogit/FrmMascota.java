@@ -181,7 +181,7 @@ public class FrmMascota extends javax.swing.JFrame {
         btnNatacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnNatacion.setForeground(new java.awt.Color(255, 255, 255));
         btnNatacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/natacion32.png"))); // NOI18N
-        btnNatacion.setToolTipText("NATACION");
+        btnNatacion.setToolTipText("NATACION [-40 Aburrimiento, -15 Energía]");
         btnNatacion.setContentAreaFilled(false);
         btnNatacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNatacion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/natacion32.png"))); // NOI18N
@@ -197,7 +197,7 @@ public class FrmMascota extends javax.swing.JFrame {
         btnDormir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnDormir.setForeground(new java.awt.Color(255, 255, 255));
         btnDormir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dormir32.png"))); // NOI18N
-        btnDormir.setToolTipText("DORMIR");
+        btnDormir.setToolTipText("DORMIR [+10 Aburrimiento, +40 Energía]");
         btnDormir.setContentAreaFilled(false);
         btnDormir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDormir.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dormir32.png"))); // NOI18N
@@ -208,12 +208,12 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnDormirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDormir, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, 140, 110));
+        getContentPane().add(btnDormir, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 140, 120));
 
         btnCaminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCaminar.setForeground(new java.awt.Color(255, 255, 255));
         btnCaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/caminar32.png"))); // NOI18N
-        btnCaminar.setToolTipText("CAMINAR");
+        btnCaminar.setToolTipText("CAMINAR [-10 Aburrimiento, -3 Energía]");
         btnCaminar.setContentAreaFilled(false);
         btnCaminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCaminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/caminar32.png"))); // NOI18N
@@ -224,12 +224,12 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnCaminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 200, 110, 90));
+        getContentPane().add(btnCaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, 110, 90));
 
         btnViajar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnViajar.setForeground(new java.awt.Color(255, 255, 255));
         btnViajar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/viajar32.png"))); // NOI18N
-        btnViajar.setToolTipText("VIAJAR");
+        btnViajar.setToolTipText("VIAJAR [-50 Aburrimiento, -20 Energía]");
         btnViajar.setContentAreaFilled(false);
         btnViajar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnViajar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/viajar32.png"))); // NOI18N
@@ -245,7 +245,7 @@ public class FrmMascota extends javax.swing.JFrame {
         btnFutbol.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnFutbol.setForeground(new java.awt.Color(255, 255, 255));
         btnFutbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/futbo32.png"))); // NOI18N
-        btnFutbol.setToolTipText("FUTBOL");
+        btnFutbol.setToolTipText("FUTBOL [-60 Aburrimiento, -30 Energía]");
         btnFutbol.setContentAreaFilled(false);
         btnFutbol.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFutbol.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/futbo32.png"))); // NOI18N
@@ -261,7 +261,7 @@ public class FrmMascota extends javax.swing.JFrame {
         btnLava.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLava.setForeground(new java.awt.Color(255, 255, 255));
         btnLava.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lava32.png"))); // NOI18N
-        btnLava.setToolTipText("LAVA");
+        btnLava.setToolTipText("LAVA [Cura el hambre, +60 Energía]");
         btnLava.setContentAreaFilled(false);
         btnLava.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLava.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lava32.png"))); // NOI18N
@@ -277,7 +277,7 @@ public class FrmMascota extends javax.swing.JFrame {
         btnCarne.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCarne.setForeground(new java.awt.Color(255, 255, 255));
         btnCarne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carne32.png"))); // NOI18N
-        btnCarne.setToolTipText("CARNE");
+        btnCarne.setToolTipText("CARNE [-50 Hambre, +15 Energía]");
         btnCarne.setContentAreaFilled(false);
         btnCarne.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCarne.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carne32.png"))); // NOI18N
@@ -293,7 +293,7 @@ public class FrmMascota extends javax.swing.JFrame {
         btnManzana.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnManzana.setForeground(new java.awt.Color(255, 255, 255));
         btnManzana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manzana32.png"))); // NOI18N
-        btnManzana.setToolTipText("MANZANA");
+        btnManzana.setToolTipText("MANZANA [-5 Hambre, +1 Energía]");
         btnManzana.setContentAreaFilled(false);
         btnManzana.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnManzana.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manzana32.png"))); // NOI18N
@@ -304,12 +304,12 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnManzanaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnManzana, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 110));
+        getContentPane().add(btnManzana, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 130, 110));
 
         btnHuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHuevo.setForeground(new java.awt.Color(255, 255, 255));
         btnHuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/huevoFrito32.png"))); // NOI18N
-        btnHuevo.setToolTipText("HUEVO");
+        btnHuevo.setToolTipText("HUEVO [-20 Hambre , +8 Energía]");
         btnHuevo.setContentAreaFilled(false);
         btnHuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHuevo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/huevoFrito32.png"))); // NOI18N
@@ -320,12 +320,12 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnHuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 130, 110));
+        getContentPane().add(btnHuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 110));
 
         btnGalleta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnGalleta.setForeground(new java.awt.Color(255, 255, 255));
         btnGalleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/galleta32.png"))); // NOI18N
-        btnGalleta.setToolTipText("GALLETA");
+        btnGalleta.setToolTipText("GALLETA [-10 Hambre, +3 Energía]");
         btnGalleta.setContentAreaFilled(false);
         btnGalleta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnGalleta.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/galleta32.png"))); // NOI18N
@@ -420,7 +420,7 @@ public class FrmMascota extends javax.swing.JFrame {
         lblAburrimiento.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblAburrimiento.setForeground(new java.awt.Color(255, 255, 255));
         lblAburrimiento.setText("Aburrimiento");
-        getContentPane().add(lblAburrimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 580, -1, -1));
+        getContentPane().add(lblAburrimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 580, 90, -1));
 
         lblBebe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/charmander_3.gif"))); // NOI18N
         getContentPane().add(lblBebe, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 190, 260));
@@ -464,12 +464,12 @@ public class FrmMascota extends javax.swing.JFrame {
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, 140, 40));
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, 140, 40));
 
         lblInformacionDe.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblInformacionDe.setForeground(new java.awt.Color(255, 255, 255));
         lblInformacionDe.setText("Información de");
-        getContentPane().add(lblInformacionDe, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 520, 200, 40));
+        getContentPane().add(lblInformacionDe, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 520, 200, 40));
 
         lblFondo.setForeground(new java.awt.Color(255, 255, 255));
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoMascota2.jpg"))); // NOI18N

@@ -35,7 +35,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/natacion32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="NATACION"/>
+        <Property name="toolTipText" type="java.lang.String" value="NATACION [-40 Aburrimiento, -15 Energ&#xed;a]"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -66,7 +66,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/dormir32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="DORMIR"/>
+        <Property name="toolTipText" type="java.lang.String" value="DORMIR [+10 Aburrimiento, +40 Energ&#xed;a]"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -82,7 +82,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="690" y="130" width="140" height="110"/>
+          <AbsoluteConstraints x="690" y="110" width="140" height="120"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -97,7 +97,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/caminar32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="CAMINAR"/>
+        <Property name="toolTipText" type="java.lang.String" value="CAMINAR [-10 Aburrimiento, -3 Energ&#xed;a]"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -113,7 +113,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="710" y="200" width="110" height="90"/>
+          <AbsoluteConstraints x="710" y="190" width="110" height="90"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -128,7 +128,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/viajar32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="VIAJAR"/>
+        <Property name="toolTipText" type="java.lang.String" value="VIAJAR [-50 Aburrimiento, -20 Energ&#xed;a]"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -159,7 +159,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/futbo32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="FUTBOL"/>
+        <Property name="toolTipText" type="java.lang.String" value="FUTBOL [-60 Aburrimiento, -30 Energ&#xed;a]"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -190,7 +190,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/lava32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="LAVA"/>
+        <Property name="toolTipText" type="java.lang.String" value="LAVA [Cura el hambre, +60 Energ&#xed;a]"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -221,7 +221,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/carne32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="CARNE"/>
+        <Property name="toolTipText" type="java.lang.String" value="CARNE [-50 Hambre, +15 Energ&#xed;a]"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -252,7 +252,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/manzana32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="MANZANA"/>
+        <Property name="toolTipText" type="java.lang.String" value="MANZANA [-5 Hambre, +1 Energ&#xed;a]"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -268,7 +268,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="230" width="130" height="110"/>
+          <AbsoluteConstraints x="0" y="290" width="130" height="110"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -283,7 +283,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/huevoFrito32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="HUEVO"/>
+        <Property name="toolTipText" type="java.lang.String" value="HUEVO [-20 Hambre , +8 Energ&#xed;a]"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -299,7 +299,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="290" width="130" height="110"/>
+          <AbsoluteConstraints x="0" y="230" width="130" height="110"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -314,7 +314,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/galleta32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="GALLETA"/>
+        <Property name="toolTipText" type="java.lang.String" value="GALLETA [-10 Hambre, +3 Energ&#xed;a]"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -518,7 +518,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="130" y="580" width="-1" height="-1"/>
+          <AbsoluteConstraints x="118" y="580" width="90" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -666,7 +666,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="470" y="520" width="140" height="40"/>
+          <AbsoluteConstraints x="490" y="520" width="140" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -682,7 +682,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="280" y="520" width="200" height="40"/>
+          <AbsoluteConstraints x="290" y="520" width="200" height="40"/>
         </Constraint>
       </Constraints>
     </Component>

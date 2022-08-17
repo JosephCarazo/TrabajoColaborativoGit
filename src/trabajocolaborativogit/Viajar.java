@@ -15,6 +15,6 @@ public class Viajar extends Actividades {
     }
     
     public Viajar(){
-        this(-15, -5, 0);
+        this(50, 20, 0);
     }
 }
