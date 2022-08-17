@@ -11,7 +11,9 @@ import javax.swing.JOptionPane;
  * @author josep
  */
 public class FrmPrincipal extends javax.swing.JFrame {
+
     Mascota dragon = new Mascota();
+
     /**
      * Creates new form FrmPrincipal
      */
@@ -19,6 +21,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         btnSiguiente1.setVisible(false);
+        btnSiguiente2.setVisible(false);
+        btnSiguiente3.setVisible(false);
+        btnSiguiente4.setVisible(false);
+        btnVamos.setVisible(false);
     }
 
     /**
@@ -32,10 +38,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btnAsignar = new javax.swing.JButton();
         btnSiguiente1 = new javax.swing.JButton();
+        btnSiguiente2 = new javax.swing.JButton();
+        btnSiguiente3 = new javax.swing.JButton();
+        btnSiguiente4 = new javax.swing.JButton();
+        btnVamos = new javax.swing.JButton();
         lblTexto1 = new javax.swing.JLabel();
+        lblTexto2 = new javax.swing.JLabel();
+        lblTexto3 = new javax.swing.JLabel();
+        lblTexto4 = new javax.swing.JLabel();
+        lblTexto5 = new javax.swing.JLabel();
         lblPresentadora = new javax.swing.JLabel();
         lblBebe = new javax.swing.JLabel();
-        lblTexto2 = new javax.swing.JLabel();
         lblFondoPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,17 +88,94 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(btnSiguiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 160, 110));
 
+        btnSiguiente2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSiguiente2.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguiente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha48.png"))); // NOI18N
+        btnSiguiente2.setText("SIGUIENTE");
+        btnSiguiente2.setContentAreaFilled(false);
+        btnSiguiente2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSiguiente2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha48.png"))); // NOI18N
+        btnSiguiente2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha64.png"))); // NOI18N
+        btnSiguiente2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnSiguiente2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSiguiente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguiente2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSiguiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 160, 110));
+
+        btnSiguiente3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSiguiente3.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguiente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha48.png"))); // NOI18N
+        btnSiguiente3.setText("SIGUIENTE");
+        btnSiguiente3.setContentAreaFilled(false);
+        btnSiguiente3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSiguiente3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha48.png"))); // NOI18N
+        btnSiguiente3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha64.png"))); // NOI18N
+        btnSiguiente3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnSiguiente3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSiguiente3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguiente3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSiguiente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 160, 110));
+
+        btnSiguiente4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSiguiente4.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguiente4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha48.png"))); // NOI18N
+        btnSiguiente4.setText("SIGUIENTE");
+        btnSiguiente4.setContentAreaFilled(false);
+        btnSiguiente4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSiguiente4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha48.png"))); // NOI18N
+        btnSiguiente4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha64.png"))); // NOI18N
+        btnSiguiente4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnSiguiente4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSiguiente4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguiente4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSiguiente4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 160, 110));
+
+        btnVamos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVamos.setForeground(new java.awt.Color(255, 255, 255));
+        btnVamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha48.png"))); // NOI18N
+        btnVamos.setText("¡VAMOS!");
+        btnVamos.setContentAreaFilled(false);
+        btnVamos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVamos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha48.png"))); // NOI18N
+        btnVamos.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha64.png"))); // NOI18N
+        btnVamos.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnVamos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnVamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVamosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 160, 110));
+
         lblTexto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textoInicio1.png"))); // NOI18N
         getContentPane().add(lblTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 270, 220));
+
+        lblTexto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textoInicio2.png"))); // NOI18N
+        getContentPane().add(lblTexto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 270, 220));
+
+        lblTexto3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textoInicio3.png"))); // NOI18N
+        getContentPane().add(lblTexto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 270, 220));
+
+        lblTexto4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textoInicio4.png"))); // NOI18N
+        getContentPane().add(lblTexto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 270, 220));
+
+        lblTexto5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textoInicio5.png"))); // NOI18N
+        getContentPane().add(lblTexto5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 270, 220));
 
         lblPresentadora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Presentadora.png"))); // NOI18N
         getContentPane().add(lblPresentadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, 30, -1, 570));
 
         lblBebe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/bebe.png"))); // NOI18N
         getContentPane().add(lblBebe, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, -1, -1));
-
-        lblTexto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/textoInicio2.png"))); // NOI18N
-        getContentPane().add(lblTexto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 270, 220));
 
         lblFondoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoPrincipal.jpg"))); // NOI18N
         getContentPane().add(lblFondoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 598));
@@ -102,8 +192,34 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAsignarActionPerformed
 
     private void btnSiguiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguiente1ActionPerformed
-        
+        lblTexto2.setVisible(false);
+        btnSiguiente1.setVisible(false);
+        btnSiguiente2.setVisible(true);
     }//GEN-LAST:event_btnSiguiente1ActionPerformed
+
+    private void btnSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguiente2ActionPerformed
+        lblTexto3.setVisible(false);
+        btnSiguiente2.setVisible(false);
+        btnSiguiente3.setVisible(true);
+    }//GEN-LAST:event_btnSiguiente2ActionPerformed
+
+    private void btnSiguiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguiente3ActionPerformed
+        lblTexto4.setVisible(false);
+        btnSiguiente3.setVisible(false);
+        btnSiguiente4.setVisible(true);
+    }//GEN-LAST:event_btnSiguiente3ActionPerformed
+
+    private void btnSiguiente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguiente4ActionPerformed
+        lblTexto5.setVisible(false);
+        btnSiguiente4.setVisible(false);
+        btnVamos.setVisible(true);
+    }//GEN-LAST:event_btnSiguiente4ActionPerformed
+
+    private void btnVamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVamosActionPerformed
+        FrmMascota mascota = new FrmMascota();
+        mascota.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVamosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,10 +259,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsignar;
     private javax.swing.JButton btnSiguiente1;
+    private javax.swing.JButton btnSiguiente2;
+    private javax.swing.JButton btnSiguiente3;
+    private javax.swing.JButton btnSiguiente4;
+    private javax.swing.JButton btnVamos;
     private javax.swing.JLabel lblBebe;
     private javax.swing.JLabel lblFondoPrincipal;
     private javax.swing.JLabel lblPresentadora;
     private javax.swing.JLabel lblTexto1;
     private javax.swing.JLabel lblTexto2;
+    private javax.swing.JLabel lblTexto3;
+    private javax.swing.JLabel lblTexto4;
+    private javax.swing.JLabel lblTexto5;
     // End of variables declaration//GEN-END:variables
 }
