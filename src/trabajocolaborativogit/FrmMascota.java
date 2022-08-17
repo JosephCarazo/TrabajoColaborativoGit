@@ -15,7 +15,16 @@ import javax.swing.Timer;
 public class FrmMascota extends javax.swing.JFrame {
 
     Mascota dragon;
+    Alimentos galleta;
+    Alimentos manzana;
+    Alimentos huevo;
+    Alimentos carne;
+    Alimentos lava;
     Actividades natacion;
+    Actividades dormir;
+    Actividades futbol;
+    Actividades caminar;
+    Actividades viajar;
 
     /**
      * Creates new form FrmMascota
@@ -23,8 +32,20 @@ public class FrmMascota extends javax.swing.JFrame {
     public FrmMascota() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        galleta = new Galleta();
+        manzana = new Manzana();
+        huevo = new Huevo();
+        carne = new Carne();
+        lava = new Lava();
         dragon = new Mascota();
+        
         natacion = new Natacion();
+        dormir = new Dormir();
+        futbol = new Futbol();
+        caminar = new Caminar();
+        viajar = new Viajar();
+        
         btnLava.setVisible(false);
         btnHuevo.setVisible(false);
         btnCarne.setVisible(false);
@@ -38,14 +59,16 @@ public class FrmMascota extends javax.swing.JFrame {
         btnFutbol.setVisible(false);
         btnViajar.setVisible(false);
         btnActividades2.setVisible(false);
-        
+
         lblJoven.setVisible(false);
         lblAdulto.setVisible(false);
+        lblEnfermo.setVisible(false);
 //        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
         jpbAburrimiento.setValue(dragon.getAburrimiento());
         jpbHambre.setValue(dragon.getHambre());
         jpbNecesidades.setValue(dragon.getNecesidades());
         jpbEnergia.setValue(dragon.getEnergia());
+        salud.start();
         hambre.start();
         edad.start();
         aburrimiento.start();
@@ -77,12 +100,18 @@ public class FrmMascota extends javax.swing.JFrame {
         }
     });
 
-    Timer edad = new Timer(86400000, new ActionListener() {//METODO TIMER
+    Timer edad = new Timer(3000, new ActionListener() {//METODO TIMER
         public void actionPerformed(ActionEvent e) {
             aumentarDia();
         }
     });
 
+    Timer salud = new Timer(1, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            mostrarSalud();
+        }
+    });
+    
     public void aumentarHambre() {
         dragon.setHambre(dragon.getHambre() + 1);
         this.mostrarHambre();
@@ -136,6 +165,16 @@ public class FrmMascota extends javax.swing.JFrame {
     public void mostrarAburrimiento() {
         jpbAburrimiento.setValue(dragon.getAburrimiento());
     }
+    
+    public void mostrarSalud(){
+        if (dragon.getAburrimiento() >= 90 || jpbEnergia.getValue() <= 10 || dragon.getHambre() >= 90 || dragon.getNecesidades() >= 90) {
+            lblSaludable.setVisible(false);
+            lblEnfermo.setVisible(true);
+        }else{
+            lblEnfermo.setVisible(false);
+            lblSaludable.setVisible(true);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -146,6 +185,8 @@ public class FrmMascota extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblSaludable = new javax.swing.JLabel();
+        lblEnfermo = new javax.swing.JLabel();
         btnNatacion = new javax.swing.JButton();
         btnDormir = new javax.swing.JButton();
         btnCaminar = new javax.swing.JButton();
@@ -179,6 +220,16 @@ public class FrmMascota extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSaludable.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblSaludable.setForeground(new java.awt.Color(0, 255, 0));
+        lblSaludable.setText("Saludable");
+        getContentPane().add(lblSaludable, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 100, -1));
+
+        lblEnfermo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblEnfermo.setForeground(new java.awt.Color(255, 51, 51));
+        lblEnfermo.setText("Enfermo");
+        getContentPane().add(lblEnfermo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 90, 20));
 
         btnNatacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnNatacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -491,23 +542,33 @@ public class FrmMascota extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlimentosActionPerformed
 
     private void btnGalletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGalletaActionPerformed
-        // TODO add your handling code here:
+        dragon.alimentar(galleta);
+        this.mostrarHambre();
+        this.mostarEnergia();
     }//GEN-LAST:event_btnGalletaActionPerformed
 
     private void btnHuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuevoActionPerformed
-        // TODO add your handling code here:
+        dragon.alimentar(huevo);
+        this.mostrarHambre();
+        this.mostarEnergia();
     }//GEN-LAST:event_btnHuevoActionPerformed
 
     private void btnManzanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManzanaActionPerformed
-        // TODO add your handling code here:
+        dragon.alimentar(manzana);
+        this.mostrarHambre();
+        this.mostarEnergia();
     }//GEN-LAST:event_btnManzanaActionPerformed
 
     private void btnCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarneActionPerformed
-        // TODO add your handling code here:
+        dragon.alimentar(carne);
+        this.mostrarHambre();
+        this.mostarEnergia();
     }//GEN-LAST:event_btnCarneActionPerformed
 
     private void btnLavaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLavaActionPerformed
-        // TODO add your handling code here:
+        dragon.alimentar(lava);
+        this.mostrarHambre();
+        this.mostarEnergia();
     }//GEN-LAST:event_btnLavaActionPerformed
 
     private void btnAlimentos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlimentos2ActionPerformed
@@ -531,23 +592,33 @@ public class FrmMascota extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActividadesActionPerformed
 
     private void btnFutbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFutbolActionPerformed
-        // TODO add your handling code here:
+        dragon.realizarActividad(futbol);
+        this.mostarEnergia();
+        this.mostrarAburrimiento();
     }//GEN-LAST:event_btnFutbolActionPerformed
 
     private void btnViajarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViajarActionPerformed
-        // TODO add your handling code here:
+        dragon.realizarActividad(viajar);
+        this.mostarEnergia();
+        this.mostrarAburrimiento();
     }//GEN-LAST:event_btnViajarActionPerformed
 
     private void btnCaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaminarActionPerformed
-        // TODO add your handling code here:
+        dragon.realizarActividad(caminar);
+        this.mostarEnergia();
+        this.mostrarAburrimiento();
     }//GEN-LAST:event_btnCaminarActionPerformed
 
     private void btnDormirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDormirActionPerformed
-        // TODO add your handling code here:
+        dragon.realizarActividad(dormir);
+        this.mostarEnergia();
+        this.mostrarAburrimiento();
     }//GEN-LAST:event_btnDormirActionPerformed
 
     private void btnNatacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNatacionActionPerformed
         dragon.realizarActividad(natacion);
+        this.mostarEnergia();
+        this.mostrarAburrimiento();
     }//GEN-LAST:event_btnNatacionActionPerformed
 
     private void btnActividades2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividades2ActionPerformed
@@ -619,6 +690,7 @@ public class FrmMascota extends javax.swing.JFrame {
     private javax.swing.JLabel lblAnnios;
     private javax.swing.JLabel lblBebe;
     private javax.swing.JLabel lblEnergia;
+    private javax.swing.JLabel lblEnfermo;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblHambre;
     private javax.swing.JLabel lblInformacionDe;
@@ -626,5 +698,6 @@ public class FrmMascota extends javax.swing.JFrame {
     private javax.swing.JLabel lblNecesidades;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumAnnios;
+    private javax.swing.JLabel lblSaludable;
     // End of variables declaration//GEN-END:variables
 }

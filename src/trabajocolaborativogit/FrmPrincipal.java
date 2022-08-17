@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author josep
  */
 public class FrmPrincipal extends javax.swing.JFrame {
-    
+
     Mascota dragon = new Mascota();
 
     /**
@@ -190,14 +190,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
         String nombre;
         do {
-            nombre = JOptionPane.showInputDialog(null, "Dale un nombre a tu mascota", "ASIGNAR UN NOMBRE", JOptionPane.INFORMATION_MESSAGE);                
+            nombre = JOptionPane.showInputDialog(null, "Dale un nombre a tu mascota", "ASIGNAR UN NOMBRE", JOptionPane.INFORMATION_MESSAGE);
             dragon.setNombre(nombre);
             txtNombreTemp.setText(nombre);
-            lblTexto1.setVisible(false);
             btnAsignar.setVisible(false);
             btnSiguiente1.setVisible(true);
-        } while (nombre == null);
-        
+        } while (nombre == null || "".equals(nombre));
+        lblTexto1.setVisible(false);
 
     }//GEN-LAST:event_btnAsignarActionPerformed
 
