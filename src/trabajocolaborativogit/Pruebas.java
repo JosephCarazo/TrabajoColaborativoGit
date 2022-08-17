@@ -18,7 +18,7 @@ public class Pruebas {
 
         Medicamento pocion = new Pocion();
 
-        Mascota dragon = new Mascota("Goku", 15, 100, 100, 0, 100, false, false);//Nombre, edad, aburrimiento, hambre, energia, necesidades, morir, salud
+        Mascota dragon = new Mascota();//Nombre, edad, aburrimiento, hambre, energia, necesidades, morir, salud
 
         Actividades futbol = new Futbol();
         Actividades dormir = new Dormir();

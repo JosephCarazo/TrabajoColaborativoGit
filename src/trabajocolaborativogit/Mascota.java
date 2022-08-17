@@ -129,19 +129,19 @@ public class Mascota {
         this.morir = morir;
     }
 
-    public Mascota(String nombre, int edad, int aburrimiento, int hambre, int energia, int necesidades, boolean morir, boolean salud) {
+    public Mascota(String nombre, int edad, int aburrimiento, int hambre, int energia, int necesidades, boolean salud, boolean morir) {
         this.nombre = nombre;
         this.edad = edad;
         this.aburrimiento = aburrimiento;
         this.hambre = hambre;
         this.energia = energia;
         this.necesidades = necesidades;
-        this.morir = morir;
         this.salud = salud;
+        this.morir = morir;
     }
 
     public Mascota() {
-        this("Default", 0, 0, 0, 100, 0, false, false);
+        this("Default", 0, 0, 0, 100, 0, true, false);
     }
 
     public void alimentar(Alimentos alimento) {

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author josep
  */
 public class FrmPrincipal extends javax.swing.JFrame {
-
+    
     Mascota dragon = new Mascota();
 
     /**
@@ -50,6 +50,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblPresentadora = new javax.swing.JLabel();
         lblBebe = new javax.swing.JLabel();
         lblFondoPrincipal = new javax.swing.JLabel();
+        txtNombreTemp = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -180,15 +181,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblFondoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoPrincipal.jpg"))); // NOI18N
         getContentPane().add(lblFondoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 598));
 
+        txtNombreTemp.setText("jTextField1");
+        getContentPane().add(txtNombreTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 190, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
-        String nombre = JOptionPane.showInputDialog(null, "ASIGNAR UN NOMBRE", "Dale un nombre a tu mascota", JOptionPane.INFORMATION_MESSAGE);
-        dragon.setNombre(nombre);
-        lblTexto1.setVisible(false);
-        btnAsignar.setVisible(false);
-        btnSiguiente1.setVisible(true);
+        String nombre;
+        do {
+            nombre = JOptionPane.showInputDialog(null, "Dale un nombre a tu mascota", "ASIGNAR UN NOMBRE", JOptionPane.INFORMATION_MESSAGE);                
+            dragon.setNombre(nombre);
+            txtNombreTemp.setText(nombre);
+            lblTexto1.setVisible(false);
+            btnAsignar.setVisible(false);
+            btnSiguiente1.setVisible(true);
+        } while (nombre == null);
+        
+
     }//GEN-LAST:event_btnAsignarActionPerformed
 
     private void btnSiguiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguiente1ActionPerformed
@@ -271,5 +281,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTexto3;
     private javax.swing.JLabel lblTexto4;
     private javax.swing.JLabel lblTexto5;
+    public static javax.swing.JTextField txtNombreTemp;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,22 +4,70 @@
  */
 package trabajocolaborativogit;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
  * @author josep
  */
-public class FrmMascota extends javax.swing.JFrame {
-
+public class FrmMascota extends javax.swing.JFrame {    
+    Mascota dragon;
     /**
      * Creates new form FrmMascota
      */
     public FrmMascota() {
         initComponents();
         this.setLocationRelativeTo(null);
+        dragon = new Mascota();
         lblJoven.setVisible(false);
         lblAdulto.setVisible(false);
+//        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
+        jpbAburrimiento.setValue(dragon.getAburrimiento());
+        jpbHambre.setValue(dragon.getHambre());
+        jpbNecesidades.setValue(dragon.getNecesidades());
+        jpbEnergia.setValue(dragon.getEnergia());
+        infoMascota.start();
+        edad.start();
     }
+    
+    Timer infoMascota = new Timer (1000, new ActionListener (){//METODO TIMER
+    public void actionPerformed(ActionEvent e){
+        disminuirinfoMascota();
+     }
+    });
+    
+    Timer edad = new Timer (86400000, new ActionListener (){//METODO TIMER
+    public void actionPerformed(ActionEvent e){
+        aumentarDia();
+     }
+    });
 
+    public void disminuirinfoMascota(){
+        dragon.setEnergia(dragon.getEnergia() -1);
+        dragon.setHambre(dragon.getHambre() + 1);
+        dragon.setNecesidades(dragon.getNecesidades() + 1);
+        dragon.setAburrimiento(dragon.getAburrimiento() + 1);
+        this.mostrarinfoMascota();
+    }
+    
+    public void aumentarDia(){
+        dragon.setEdad(dragon.getEdad() + 1);
+        this.mostrarDia();
+    }
+    
+    public void mostrarDia(){
+        String annios = String.valueOf(dragon.getEdad());
+        lblNumAnnios.setText(annios);
+    }
+    
+    public void mostrarinfoMascota(){
+        jpbEnergia.setValue(dragon.getEnergia());
+        jpbHambre.setValue(dragon.getHambre());
+        jpbNecesidades.setValue(dragon.getNecesidades());
+        jpbAburrimiento.setValue(dragon.getAburrimiento());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,6 +77,14 @@ public class FrmMascota extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblNumAnnios = new javax.swing.JLabel();
+        lblAnnios = new javax.swing.JLabel();
+        jpbEnergia = new javax.swing.JProgressBar();
+        jpbNecesidades = new javax.swing.JProgressBar();
+        jpbHambre = new javax.swing.JProgressBar();
+        jpbAburrimiento = new javax.swing.JProgressBar();
+        lblNombre = new javax.swing.JLabel();
+        lblInformacionDe = new javax.swing.JLabel();
         lblBebe = new javax.swing.JLabel();
         lblJoven = new javax.swing.JLabel();
         lblAdulto = new javax.swing.JLabel();
@@ -36,6 +92,41 @@ public class FrmMascota extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNumAnnios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNumAnnios.setForeground(new java.awt.Color(255, 255, 255));
+        lblNumAnnios.setText("1");
+        getContentPane().add(lblNumAnnios, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 30, 30));
+
+        lblAnnios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblAnnios.setForeground(new java.awt.Color(255, 255, 255));
+        lblAnnios.setText("Años:");
+        getContentPane().add(lblAnnios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 50, 30));
+
+        jpbEnergia.setBackground(new java.awt.Color(51, 51, 51));
+        jpbEnergia.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(jpbEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
+
+        jpbNecesidades.setBackground(new java.awt.Color(51, 51, 51));
+        jpbNecesidades.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(jpbNecesidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 600, -1, 10));
+
+        jpbHambre.setBackground(new java.awt.Color(51, 51, 51));
+        jpbHambre.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(jpbHambre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 600, -1, 10));
+
+        jpbAburrimiento.setBackground(new java.awt.Color(51, 51, 51));
+        jpbAburrimiento.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(jpbAburrimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 600, -1, 10));
+
+        lblNombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, 140, 40));
+
+        lblInformacionDe.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblInformacionDe.setForeground(new java.awt.Color(255, 255, 255));
+        lblInformacionDe.setText("Información de");
+        getContentPane().add(lblInformacionDe, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 520, 200, 40));
 
         lblBebe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/charmander_3.gif"))); // NOI18N
         getContentPane().add(lblBebe, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 190, 260));
@@ -46,6 +137,7 @@ public class FrmMascota extends javax.swing.JFrame {
         lblAdulto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/charizard_3.gif"))); // NOI18N
         getContentPane().add(lblAdulto, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, -20, 360, 460));
 
+        lblFondo.setForeground(new java.awt.Color(255, 255, 255));
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoMascota2.jpg"))); // NOI18N
         getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -88,9 +180,17 @@ public class FrmMascota extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar jpbAburrimiento;
+    private javax.swing.JProgressBar jpbEnergia;
+    private javax.swing.JProgressBar jpbHambre;
+    private javax.swing.JProgressBar jpbNecesidades;
     private javax.swing.JLabel lblAdulto;
+    private javax.swing.JLabel lblAnnios;
     private javax.swing.JLabel lblBebe;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblInformacionDe;
     private javax.swing.JLabel lblJoven;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNumAnnios;
     // End of variables declaration//GEN-END:variables
 }
