@@ -10,12 +10,13 @@ package trabajocolaborativogit;
  */
 public class Pocion extends Medicamento {
 
-    public Pocion(String nombre, int cantidadSalud, int tiempo) {
-        super(nombre, cantidadSalud, tiempo);
+    public Pocion(String nombre, int bajarAburrimiento, int bajarHambre, int subirEnergia, int bajarNecesidades, int tiempo) {
+        super(nombre, bajarAburrimiento, bajarHambre, subirEnergia, bajarNecesidades, tiempo);
     }
 
-    public Pocion() {
-        this("Pocion", 100, 0);
+    public Pocion(){
+        this("Pocion", 20, 20, 20, 20, 0);
     }
+    
 
 }

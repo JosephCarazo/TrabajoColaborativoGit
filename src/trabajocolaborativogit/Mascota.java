@@ -16,10 +16,8 @@ public class Mascota {
     private int hambre;
     private int energia;
     private int necesidades;
-    private int salud;
     private boolean morir;
-    private boolean cansado;
-    private boolean enfermo;
+    private boolean salud;//False = Saludable
 
     public String getNombre() {
         return nombre;
@@ -37,21 +35,12 @@ public class Mascota {
         this.edad = edad;
     }
 
-    public int getSalud() {
+    public boolean isSalud() {
         return salud;
-
     }
 
-    public void setSalud(int salud) {
+    public void setSalud(boolean salud) {
         this.salud = salud;
-        if (salud > 100) {
-            this.salud = 100;
-        } else if (salud < 0) {
-            this.salud = 0;
-        }else if (this.salud <= 20) {
-            this.setEnfermo(true);
-        }
-        
     }
 
     public int getAburrimiento() {
@@ -60,8 +49,17 @@ public class Mascota {
 
     public void setAburrimiento(int aburrimiento) {
         this.aburrimiento = aburrimiento;
-        if (this.aburrimiento < 0) {
-            this.aburrimiento = 0;
+        if (this.getAburrimiento() > 100) {
+            this.setAburrimiento(100);
+        }
+        if (this.getAburrimiento() < 0) {
+            this.setAburrimiento(0);
+        }
+        if (this.getAburrimiento() >= 90) {
+            this.setSalud(true);
+        }
+        if (this.getAburrimiento() == 100) {
+            this.setMorir(true);
         }
     }
 
@@ -71,6 +69,17 @@ public class Mascota {
 
     public void setHambre(int hambre) {
         this.hambre = hambre;
+        if (this.getHambre() > 100) {
+            this.setHambre(100);
+        } else if (this.getHambre() < 0) {
+            this.setHambre(0);
+        }
+        if (this.getHambre() >= 90) {
+            this.setSalud(true);
+        }
+        if (this.getHambre() == 100) {
+            this.setMorir(true);
+        }
     }
 
     public int getEnergia() {
@@ -79,21 +88,37 @@ public class Mascota {
 
     public void setEnergia(int energia) {
         this.energia = energia;
-        if (energia > 100) {
-            this.energia = 100;
-        } else if (energia < 0) {
-            this.energia = 0;
+        if (this.getEnergia() > 100) {
+            this.setEnergia(100);
+        } else if (this.getEnergia() < 0) {
+            this.setEnergia(0);
         }
-        if (this.getEnergia() <= 20) {
-            this.setCansado(true);
-        } else {
-            this.setCansado(false);
+        if (this.getEnergia() <= 10) {
+            this.setSalud(true);
         }
-
+        if (this.getEnergia() == 0) {
+            this.setMorir(true);
+        }
     }
 
     public int getNecesidades() {
         return necesidades;
+    }
+
+    public void setNecesidades(int necesidades) {
+        this.necesidades = necesidades;
+        if (this.getNecesidades() > 100) {
+            this.setNecesidades(100);
+        }
+        if (this.getNecesidades() < 0) {
+            this.setNecesidades(0);
+        }
+        if (this.getNecesidades() >= 90) {
+            this.setSalud(true);
+        }
+        if (this.getNecesidades() == 100) {
+            this.setMorir(true);
+        }
     }
 
     public boolean isMorir() {
@@ -104,50 +129,19 @@ public class Mascota {
         this.morir = morir;
     }
 
-    public boolean isCansado() {
-        return cansado;
-    }
-
-    public void setCansado(boolean cansado) {
-        this.cansado = cansado;
-    }
-
-    public boolean isEnfermo() {
-        return enfermo;
-    }
-
-    public void setEnfermo(boolean enfermo) {
-        this.enfermo = enfermo;
-    }
-
-    public Mascota(String nombre, int edad, int aburrimiento, int hambre, int energia, int necesidades, int salud, boolean morir, boolean cansado, boolean enfermo) {
+    public Mascota(String nombre, int edad, int aburrimiento, int hambre, int energia, int necesidades, boolean morir, boolean salud) {
         this.nombre = nombre;
         this.edad = edad;
         this.aburrimiento = aburrimiento;
         this.hambre = hambre;
         this.energia = energia;
         this.necesidades = necesidades;
-        this.salud = salud;
         this.morir = morir;
-        this.cansado = cansado;
-        this.enfermo = enfermo;
-    }
-
-    public Mascota(String nombre) {
-        this.nombre = nombre;
-        this.edad = 0;
-        this.aburrimiento = 0;
-        this.hambre = 0;
-        this.energia = 100;
-        this.necesidades = 0;
-        this.salud = 100;
-        this.morir = false;
-        this.cansado = false;
-        this.enfermo = false;
+        this.salud = salud;
     }
 
     public Mascota() {
-        this("Default", 0, 100, 100, 15, 0, 0, false, false, false);
+        this("Default", 0, 0, 0, 100, 0, false, false);
     }
 
     public void alimentar(Alimentos alimento) {
@@ -156,10 +150,17 @@ public class Mascota {
     }
 
     public void curar(Medicamento medicamento) {
-        if (this.getSalud() == 100) {
-            this.setSalud(this.getSalud() - medicamento.cantidadSalud);
+        if (this.isSalud() == false) {
+            this.setAburrimiento(this.getAburrimiento() + medicamento.bajarAburrimiento);
+            this.setEnergia(this.getEnergia() - medicamento.subirEnergia);
+            this.setHambre(this.getHambre() + medicamento.bajarHambre);
+            this.setNecesidades(this.getNecesidades() + medicamento.bajarNecesidades);
+        }else{
+        this.setAburrimiento(this.getAburrimiento() - medicamento.bajarAburrimiento);
+        this.setEnergia(this.getEnergia() + medicamento.subirEnergia);
+        this.setHambre(this.getHambre() - medicamento.bajarHambre);
+        this.setNecesidades(this.getNecesidades() - medicamento.bajarNecesidades);
         }
-        this.setSalud(this.getSalud() + medicamento.cantidadSalud);
     }
 
     public void realizarActividad(Actividades actividad) {
@@ -169,7 +170,10 @@ public class Mascota {
 
     @Override
     public String toString() {
-        return "\n*************" + "\nNombre: " + nombre + "||Edad: " + edad + "||Aburrimiento: " + aburrimiento + "||Hambre: " + hambre + "||Energia: " + energia + "||Necesidades: " + necesidades + "||Salud: " + salud + "||Morir: " + morir + "||Cansado: " + cansado + "||Enfermo: " + enfermo;
+        return """
+               
+               *************
+               Nombre: """ + nombre + "||Edad: " + edad + "||Aburrimiento: " + aburrimiento + "||Hambre: " + hambre + "||Energia: " + energia + "||Necesidades: " + necesidades + "||Salud: " + salud + "||Morir: " + morir;
     }
 
 }

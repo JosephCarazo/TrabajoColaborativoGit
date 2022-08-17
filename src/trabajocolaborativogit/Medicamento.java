@@ -11,7 +11,10 @@ package trabajocolaborativogit;
 public class Medicamento {
 
     private String nombre;
-    protected int cantidadSalud;
+    protected int bajarAburrimiento;
+    protected int bajarHambre;
+    protected int subirEnergia;
+    protected int bajarNecesidades;
     protected int tiempo;
 
     public String getNombre() {
@@ -22,12 +25,36 @@ public class Medicamento {
         this.nombre = nombre;
     }
 
-    public int getCantidadSalud() {
-        return cantidadSalud;
+    public int getBajarAburrimiento() {
+        return bajarAburrimiento;
     }
 
-    public void setCantidadSalud(int cantidadSalud) {
-        this.cantidadSalud = cantidadSalud;
+    public void setBajarAburrimiento(int bajarAburrimiento) {
+        this.bajarAburrimiento = bajarAburrimiento;
+    }
+
+    public int getBajarHambre() {
+        return bajarHambre;
+    }
+
+    public void setBajarHambre(int bajarHambre) {
+        this.bajarHambre = bajarHambre;
+    }
+
+    public int getSubirEnergia() {
+        return subirEnergia;
+    }
+
+    public void setSubirEnergia(int subirEnergia) {
+        this.subirEnergia = subirEnergia;
+    }
+
+    public int getBajarNecesidades() {
+        return bajarNecesidades;
+    }
+
+    public void setBajarNecesidades(int bajarNecesidades) {
+        this.bajarNecesidades = bajarNecesidades;
     }
 
     public int getTiempo() {
@@ -38,10 +65,14 @@ public class Medicamento {
         this.tiempo = tiempo;
     }
 
-    public Medicamento(String nombre, int cantidadSalud, int tiempo) {
+    public Medicamento(String nombre, int bajarAburrimiento, int bajarHambre, int subirEnergia, int bajarNecesidades, int tiempo) {
         this.nombre = nombre;
-        this.cantidadSalud = cantidadSalud;
+        this.bajarAburrimiento = bajarAburrimiento;
+        this.bajarHambre = bajarHambre;
+        this.subirEnergia = subirEnergia;
+        this.bajarNecesidades = bajarNecesidades;
         this.tiempo = tiempo;
     }
 
+    
 }

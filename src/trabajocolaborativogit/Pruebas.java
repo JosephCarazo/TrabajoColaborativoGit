@@ -16,21 +16,21 @@ public class Pruebas {
     public static void main(String[] args) {
         Alimentos manzana = new Manzana();
 
-        Medicamento inyeccion = new Inyeccion();
+        Medicamento pocion = new Pocion();
 
-        Mascota dragon = new Mascota();
+        Mascota dragon = new Mascota("Goku", 15, 100, 100, 0, 100, false, false);//Nombre, edad, aburrimiento, hambre, energia, necesidades, morir, salud
 
         Actividades futbol = new Futbol();
         Actividades dormir = new Dormir();
 
         System.out.println("1 "+ dragon);//1
         dragon.alimentar(manzana);
-        System.out.println("2 "+ dragon);//1
+        System.out.println("2 "+ dragon);//2
 
-        dragon.curar(inyeccion);
+        dragon.curar(pocion);
         System.out.println("3 "+ dragon);//3
 
-        dragon.curar(inyeccion);
+        dragon.curar(pocion);
         System.out.println("4 "+ dragon);//4
 
         dragon.realizarActividad(futbol);
