@@ -122,7 +122,7 @@ public class FrmMascota extends javax.swing.JFrame {
         }
     });
 
-    Timer edad = new Timer(1000, new ActionListener() {//METODO TIMER
+    Timer edad = new Timer(60000, new ActionListener() {//METODO TIMER
         public void actionPerformed(ActionEvent e) {
             aumentarEdad();
         }
