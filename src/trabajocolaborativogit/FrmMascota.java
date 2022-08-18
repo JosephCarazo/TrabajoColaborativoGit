@@ -76,7 +76,7 @@ public class FrmMascota extends javax.swing.JFrame {
         lblJoven.setVisible(false);
         lblAdulto.setVisible(false);
         lblEnfermo.setVisible(false);
-//        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
+        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
         jpbAburrimiento.setValue(dragon.getAburrimiento());
         jpbHambre.setValue(dragon.getHambre());
         jpbNecesidades.setValue(dragon.getNecesidades());
