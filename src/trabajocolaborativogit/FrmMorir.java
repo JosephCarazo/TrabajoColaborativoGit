@@ -16,7 +16,7 @@ public class FrmMorir extends javax.swing.JFrame {
     public FrmMorir() {
         initComponents();
         this.setLocationRelativeTo(null);
-        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
+//        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
     }
 
     /**
@@ -38,6 +38,7 @@ public class FrmMorir extends javax.swing.JFrame {
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombre.setToolTipText("");
         getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, 180, 20));
 
         lblRIP.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
