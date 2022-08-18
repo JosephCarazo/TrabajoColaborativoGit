@@ -4,6 +4,7 @@
  */
 package trabajocolaborativogit;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.sound.sampled.AudioSystem;
@@ -38,7 +39,7 @@ public class FrmMascota extends javax.swing.JFrame {
     public FrmMascota() {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        
         galleta = new Galleta();
         manzana = new Manzana();
         huevo = new Huevo();
