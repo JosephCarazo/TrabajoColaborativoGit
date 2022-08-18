@@ -4,19 +4,29 @@
  */
 package trabajocolaborativogit;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 /**
  *
  * @author josep
  */
 public class FrmMorir extends javax.swing.JFrame {
-
+    private Clip clip;
     /**
      * Creates new form FrmMorir
      */
     public FrmMorir() {
         initComponents();
         this.setLocationRelativeTo(null);
-        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
+//        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
+        Clip clip;
+        try {
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/Sonidos/Sad.wav")));
+            clip.start();
+        } catch (Exception e) {
+        }
     }
 
     /**

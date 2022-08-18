@@ -6,6 +6,8 @@ package trabajocolaborativogit;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.Timer;
 
 /**
@@ -13,6 +15,8 @@ import javax.swing.Timer;
  * @author josep
  */
 public class FrmMascota extends javax.swing.JFrame {
+
+    private Clip clip;
 
     Mascota dragon;
     Alimentos galleta;
@@ -23,7 +27,7 @@ public class FrmMascota extends javax.swing.JFrame {
     Actividades natacion;
     Actividades dormir;
     Actividades futbol;
-    Actividades caminar;
+    Actividades volar;
     Actividades viajar;
     Bannio bannio;
     Medicamento pocion;
@@ -45,32 +49,34 @@ public class FrmMascota extends javax.swing.JFrame {
         natacion = new Natacion();
         dormir = new Dormir();
         futbol = new Futbol();
-        caminar = new Volar();
+        volar = new Volar();
         viajar = new Viajar();
         bannio = new Bannio();
 
         pocion = new Pocion();
+
+        jpAlimentos.setVisible(false);
 
         lblLava2.setVisible(false);
         lblHuevo2.setVisible(false);
         lblCarne2.setVisible(false);
         lblManzana2.setVisible(false);
         lblGalleta2.setVisible(false);
-
-        btnDormir.setVisible(false);
-        btnCaminar.setVisible(false);
-        btnNatacion.setVisible(false);
-        btnFutbol.setVisible(false);
-        btnViajar.setVisible(false);
-        btnBannio.setVisible(false);
-        btnActividades2.setVisible(false);
+        lblViajar2.setVisible(false);
+        lblFutbol2.setVisible(false);
+        lblBannio2.setVisible(false);
+        lblVolar2.setVisible(false);
+        lblDormir2.setVisible(false);
+        lblNatacion2.setVisible(false);
+        jpActividades.setVisible(false);
 
         lblPocion2.setVisible(false);
+        jpMedicamentos.setVisible(false);
 
         lblJoven.setVisible(false);
         lblAdulto.setVisible(false);
         lblEnfermo.setVisible(false);
-        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
+//        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
         jpbAburrimiento.setValue(dragon.getAburrimiento());
         jpbHambre.setValue(dragon.getHambre());
         jpbNecesidades.setValue(dragon.getNecesidades());
@@ -82,6 +88,14 @@ public class FrmMascota extends javax.swing.JFrame {
         necesidades.start();
         energia.start();
         muerte.start();
+
+        Clip clip;
+        try {
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/Sonidos/musica.wav")));
+            clip.start();
+        } catch (Exception e) {
+        }
     }
 
     Timer hambre = new Timer(5000, new ActionListener() {//METODO TIMER
@@ -162,6 +176,102 @@ public class FrmMascota extends javax.swing.JFrame {
             ocultarManzana();
         }
     });
+
+    Timer volarTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarVolar();
+        }
+    });
+
+    Timer dormirTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarDormir();
+        }
+    });
+
+    Timer futbolTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarFutbol();
+        }
+    });
+
+    Timer bannioTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarBannio();
+        }
+    });
+
+    Timer natacionTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarNatacion();
+        }
+    });
+
+    Timer viajarTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarViajar();
+        }
+    });
+
+    public void ocultarViajar() {
+        viajar.setTiempo(viajar.getTiempo() + 1);
+        if (viajar.getTiempo() == 10) {
+            btnViajar.setVisible(true);
+            lblViajar2.setVisible(false);
+            viajarTiempo.stop();
+            viajar.setTiempo(0);
+        }
+    }
+
+    public void ocultarFutbol() {
+        futbol.setTiempo(futbol.getTiempo() + 1);
+        if (futbol.getTiempo() == 40) {
+            btnFutbol.setVisible(true);
+            lblFutbol2.setVisible(false);
+            futbolTiempo.stop();
+            futbol.setTiempo(0);
+        }
+    }
+
+    public void ocultarDormir() {
+        dormir.setTiempo(dormir.getTiempo() + 1);
+        if (dormir.getTiempo() == 80) {
+            btnDormir.setVisible(true);
+            lblDormir2.setVisible(false);
+            dormirTiempo.stop();
+            dormir.setTiempo(0);
+        }
+    }
+
+    public void ocultarVolar() {
+        volar.setTiempo(volar.getTiempo() + 1);
+        if (volar.getTiempo() == 10) {
+            btnCaminar.setVisible(true);
+            lblVolar2.setVisible(false);
+            volarTiempo.stop();
+            volar.setTiempo(0);
+        }
+    }
+
+    public void ocultarNatacion() {
+        natacion.setTiempo(natacion.getTiempo() + 1);
+        if (natacion.getTiempo() == 8) {
+            btnNatacion.setVisible(true);
+            lblNatacion2.setVisible(false);
+            natacionTiempo.stop();
+            natacion.setTiempo(0);
+        }
+    }
+
+    public void ocultarBannio() {
+        bannio.setTiempo(bannio.getTiempo() + 1);
+        if (bannio.getTiempo() == 90) {
+            btnBannio.setVisible(true);
+            lblBannio2.setVisible(false);
+            bannioTiempo.stop();
+            bannio.setTiempo(0);
+        }
+    }
 
     public void ocultarPocion() {
         pocion.setTiempo(pocion.getTiempo() + 1);
@@ -310,29 +420,37 @@ public class FrmMascota extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblSaludable = new javax.swing.JLabel();
-        lblEnfermo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        btnCerrar = new javax.swing.JButton();
+        jpActividades = new javax.swing.JPanel();
         btnBannio = new javax.swing.JButton();
+        lblBannio2 = new javax.swing.JLabel();
+        btnNatacion = new javax.swing.JButton();
+        lblNatacion2 = new javax.swing.JLabel();
+        btnDormir = new javax.swing.JButton();
+        lblDormir2 = new javax.swing.JLabel();
+        btnCaminar = new javax.swing.JButton();
+        lblVolar2 = new javax.swing.JLabel();
+        btnViajar = new javax.swing.JButton();
+        lblViajar2 = new javax.swing.JLabel();
+        btnFutbol = new javax.swing.JButton();
+        lblFutbol2 = new javax.swing.JLabel();
+        jpMedicamentos = new javax.swing.JPanel();
         btnPocion = new javax.swing.JButton();
         lblPocion2 = new javax.swing.JLabel();
-        btnNatacion = new javax.swing.JButton();
-        btnDormir = new javax.swing.JButton();
-        btnCaminar = new javax.swing.JButton();
-        btnViajar = new javax.swing.JButton();
-        btnFutbol = new javax.swing.JButton();
+        jpAlimentos = new javax.swing.JPanel();
         btnLava = new javax.swing.JButton();
-        lblLava2 = new javax.swing.JLabel();
         btnCarne = new javax.swing.JButton();
-        lblCarne2 = new javax.swing.JLabel();
         btnManzana = new javax.swing.JButton();
-        lblManzana2 = new javax.swing.JLabel();
         btnHuevo = new javax.swing.JButton();
-        lblHuevo2 = new javax.swing.JLabel();
         btnGalleta = new javax.swing.JButton();
+        lblLava2 = new javax.swing.JLabel();
         lblGalleta2 = new javax.swing.JLabel();
-        btnActividades2 = new javax.swing.JButton();
+        lblManzana2 = new javax.swing.JLabel();
+        lblHuevo2 = new javax.swing.JLabel();
+        lblCarne2 = new javax.swing.JLabel();
+        lblSaludable = new javax.swing.JLabel();
+        btnAlimentos = new javax.swing.JButton();
+        lblEnfermo = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JButton();
         btnActividades = new javax.swing.JButton();
         lblEnergia = new javax.swing.JLabel();
         lblNecesidades = new javax.swing.JLabel();
@@ -342,34 +460,280 @@ public class FrmMascota extends javax.swing.JFrame {
         lblJoven = new javax.swing.JLabel();
         lblAdulto = new javax.swing.JLabel();
         lblNumAnnios = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         lblAnnios = new javax.swing.JLabel();
-        jpbEnergia = new javax.swing.JProgressBar();
         jpbNecesidades = new javax.swing.JProgressBar();
         jpbHambre = new javax.swing.JProgressBar();
         jpbAburrimiento = new javax.swing.JProgressBar();
+        btnMedicamentos = new javax.swing.JButton();
         lblNombre = new javax.swing.JLabel();
         lblInformacionDe = new javax.swing.JLabel();
+        jpbEnergia = new javax.swing.JProgressBar();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jpActividades.setOpaque(false);
+        jpActividades.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnBannio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBannio.setForeground(new java.awt.Color(255, 255, 255));
+        btnBannio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baño32.png"))); // NOI18N
+        btnBannio.setToolTipText("BAÑO [Quita las necesidades]");
+        btnBannio.setContentAreaFilled(false);
+        btnBannio.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baño32.png"))); // NOI18N
+        btnBannio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baño48.png"))); // NOI18N
+        btnBannio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBannioActionPerformed(evt);
+            }
+        });
+        jpActividades.add(btnBannio, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 10, 70, -1));
+
+        lblBannio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpActividades.add(lblBannio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 60));
+
+        btnNatacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnNatacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnNatacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/natacion32.png"))); // NOI18N
+        btnNatacion.setToolTipText("NATACION [-40 Aburrimiento, -15 Energía]");
+        btnNatacion.setContentAreaFilled(false);
+        btnNatacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNatacion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/natacion32.png"))); // NOI18N
+        btnNatacion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/natacion48.png"))); // NOI18N
+        btnNatacion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNatacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNatacionActionPerformed(evt);
+            }
+        });
+        jpActividades.add(btnNatacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 270, 130, 110));
+
+        lblNatacion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpActividades.add(lblNatacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 40, 50));
+
+        btnDormir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnDormir.setForeground(new java.awt.Color(255, 255, 255));
+        btnDormir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dormir32.png"))); // NOI18N
+        btnDormir.setToolTipText("DORMIR [+10 Aburrimiento, +40 Energía]");
+        btnDormir.setContentAreaFilled(false);
+        btnDormir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDormir.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dormir32.png"))); // NOI18N
+        btnDormir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dormir48.png"))); // NOI18N
+        btnDormir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDormir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDormirActionPerformed(evt);
+            }
+        });
+        jpActividades.add(btnDormir, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 30, 150, 120));
+
+        lblDormir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpActividades.add(lblDormir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 40, 50));
+
+        btnCaminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnCaminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alas32.png"))); // NOI18N
+        btnCaminar.setToolTipText("VOLAR [-10 Aburrimiento, -3 Energía]");
+        btnCaminar.setContentAreaFilled(false);
+        btnCaminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCaminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alas32.png"))); // NOI18N
+        btnCaminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alas48.png"))); // NOI18N
+        btnCaminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCaminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaminarActionPerformed(evt);
+            }
+        });
+        jpActividades.add(btnCaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 110, 110, 90));
+
+        lblVolar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpActividades.add(lblVolar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 60, 50));
+
+        btnViajar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnViajar.setForeground(new java.awt.Color(255, 255, 255));
+        btnViajar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/viajar32.png"))); // NOI18N
+        btnViajar.setToolTipText("VIAJAR [-50 Aburrimiento, -20 Energía]");
+        btnViajar.setContentAreaFilled(false);
+        btnViajar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnViajar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/viajar32.png"))); // NOI18N
+        btnViajar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/viajar48.png"))); // NOI18N
+        btnViajar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnViajar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViajarActionPerformed(evt);
+            }
+        });
+        jpActividades.add(btnViajar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 210, 130, 110));
+
+        lblViajar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpActividades.add(lblViajar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 40, 50));
+
+        btnFutbol.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnFutbol.setForeground(new java.awt.Color(255, 255, 255));
+        btnFutbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/futbo32.png"))); // NOI18N
+        btnFutbol.setToolTipText("FUTBOL [-60 Aburrimiento, -30 Energía]");
+        btnFutbol.setContentAreaFilled(false);
+        btnFutbol.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnFutbol.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/futbo32.png"))); // NOI18N
+        btnFutbol.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/futbo48.png"))); // NOI18N
+        btnFutbol.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnFutbol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFutbolActionPerformed(evt);
+            }
+        });
+        jpActividades.add(btnFutbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 170, 130, 90));
+
+        lblFutbol2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpActividades.add(lblFutbol2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 40, 60));
+
+        getContentPane().add(jpActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 60, 360));
+
+        jpMedicamentos.setOpaque(false);
+        jpMedicamentos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnPocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pocion32.png"))); // NOI18N
+        btnPocion.setContentAreaFilled(false);
+        btnPocion.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pocion32.png"))); // NOI18N
+        btnPocion.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pocion48.png"))); // NOI18N
+        btnPocion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPocionActionPerformed(evt);
+            }
+        });
+        jpMedicamentos.add(btnPocion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 70, 60));
+
+        lblPocion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpMedicamentos.add(lblPocion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 40, 70));
+
+        getContentPane().add(jpMedicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 100, 80));
+
+        jpAlimentos.setOpaque(false);
+        jpAlimentos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnLava.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLava.setForeground(new java.awt.Color(255, 255, 255));
+        btnLava.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lava32.png"))); // NOI18N
+        btnLava.setToolTipText("LAVA [Cura el hambre, +60 Energía]");
+        btnLava.setContentAreaFilled(false);
+        btnLava.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLava.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lava32.png"))); // NOI18N
+        btnLava.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lava48.png"))); // NOI18N
+        btnLava.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLava.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLavaActionPerformed(evt);
+            }
+        });
+        jpAlimentos.add(btnLava, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, 70));
+
+        btnCarne.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnCarne.setForeground(new java.awt.Color(255, 255, 255));
+        btnCarne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carne32.png"))); // NOI18N
+        btnCarne.setToolTipText("CARNE [-50 Hambre, +15 Energía]");
+        btnCarne.setContentAreaFilled(false);
+        btnCarne.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCarne.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carne32.png"))); // NOI18N
+        btnCarne.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carne48.png"))); // NOI18N
+        btnCarne.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCarne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCarneActionPerformed(evt);
+            }
+        });
+        jpAlimentos.add(btnCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 70, 40));
+
+        btnManzana.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnManzana.setForeground(new java.awt.Color(255, 255, 255));
+        btnManzana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manzana32.png"))); // NOI18N
+        btnManzana.setToolTipText("MANZANA [-5 Hambre, +1 Energía]");
+        btnManzana.setContentAreaFilled(false);
+        btnManzana.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnManzana.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manzana32.png"))); // NOI18N
+        btnManzana.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manzana48.png"))); // NOI18N
+        btnManzana.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnManzana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManzanaActionPerformed(evt);
+            }
+        });
+        jpAlimentos.add(btnManzana, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 50, 50));
+
+        btnHuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnHuevo.setForeground(new java.awt.Color(255, 255, 255));
+        btnHuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/huevoFrito32.png"))); // NOI18N
+        btnHuevo.setToolTipText("HUEVO [-20 Hambre , +8 Energía]");
+        btnHuevo.setContentAreaFilled(false);
+        btnHuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHuevo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/huevoFrito32.png"))); // NOI18N
+        btnHuevo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/huevoFrito48.png"))); // NOI18N
+        btnHuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuevoActionPerformed(evt);
+            }
+        });
+        jpAlimentos.add(btnHuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 50, 50));
+
+        btnGalleta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGalleta.setForeground(new java.awt.Color(255, 255, 255));
+        btnGalleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/galleta32.png"))); // NOI18N
+        btnGalleta.setToolTipText("GALLETA [-10 Hambre, +3 Energía]");
+        btnGalleta.setContentAreaFilled(false);
+        btnGalleta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnGalleta.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/galleta32.png"))); // NOI18N
+        btnGalleta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/galleta48.png"))); // NOI18N
+        btnGalleta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnGalleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGalletaActionPerformed(evt);
+            }
+        });
+        jpAlimentos.add(btnGalleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 50, 50));
+
+        lblLava2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpAlimentos.add(lblLava2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 40, 30));
+
+        lblGalleta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpAlimentos.add(lblGalleta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 40, 30));
+
+        lblManzana2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpAlimentos.add(lblManzana2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 40, 40));
+
+        lblHuevo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpAlimentos.add(lblHuevo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 40, 40));
+
+        lblCarne2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        jpAlimentos.add(lblCarne2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 40, 40));
+
+        getContentPane().add(jpAlimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 90, 330));
+
         lblSaludable.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblSaludable.setForeground(new java.awt.Color(0, 255, 0));
         lblSaludable.setText("Saludable");
         getContentPane().add(lblSaludable, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 100, -1));
 
+        btnAlimentos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAlimentos.setForeground(new java.awt.Color(255, 255, 255));
+        btnAlimentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alimentos64.png"))); // NOI18N
+        btnAlimentos.setText("ALIMENTOS");
+        btnAlimentos.setContentAreaFilled(false);
+        btnAlimentos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAlimentos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnAlimentos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAlimentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlimentosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAlimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 120, 110));
+
         lblEnfermo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblEnfermo.setForeground(new java.awt.Color(255, 51, 51));
         lblEnfermo.setText("Enfermo");
         getContentPane().add(lblEnfermo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 90, 20));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ALIMENTOS");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -386,226 +750,7 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, -1, 100));
-
-        btnBannio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnBannio.setForeground(new java.awt.Color(255, 255, 255));
-        btnBannio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baño32.png"))); // NOI18N
-        btnBannio.setToolTipText("BAÑO [Quita las necesidades]");
-        btnBannio.setContentAreaFilled(false);
-        btnBannio.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baño32.png"))); // NOI18N
-        btnBannio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baño48.png"))); // NOI18N
-        btnBannio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBannioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnBannio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 50, -1));
-
-        btnPocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pocion32.png"))); // NOI18N
-        btnPocion.setContentAreaFilled(false);
-        btnPocion.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pocion32.png"))); // NOI18N
-        btnPocion.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pocion48.png"))); // NOI18N
-        btnPocion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPocionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPocion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 50, 70));
-
-        lblPocion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
-        getContentPane().add(lblPocion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 40, 70));
-
-        btnNatacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnNatacion.setForeground(new java.awt.Color(255, 255, 255));
-        btnNatacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/natacion32.png"))); // NOI18N
-        btnNatacion.setToolTipText("NATACION [-40 Aburrimiento, -15 Energía]");
-        btnNatacion.setContentAreaFilled(false);
-        btnNatacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnNatacion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/natacion32.png"))); // NOI18N
-        btnNatacion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/natacion48.png"))); // NOI18N
-        btnNatacion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnNatacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNatacionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnNatacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 370, 130, 110));
-
-        btnDormir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnDormir.setForeground(new java.awt.Color(255, 255, 255));
-        btnDormir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dormir32.png"))); // NOI18N
-        btnDormir.setToolTipText("DORMIR [+10 Aburrimiento, +40 Energía]");
-        btnDormir.setContentAreaFilled(false);
-        btnDormir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDormir.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dormir32.png"))); // NOI18N
-        btnDormir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dormir48.png"))); // NOI18N
-        btnDormir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnDormir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDormirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnDormir, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 140, 120));
-
-        btnCaminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnCaminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alas32.png"))); // NOI18N
-        btnCaminar.setToolTipText("VOLAR [-10 Aburrimiento, -3 Energía]");
-        btnCaminar.setContentAreaFilled(false);
-        btnCaminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCaminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alas32.png"))); // NOI18N
-        btnCaminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alas48.png"))); // NOI18N
-        btnCaminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnCaminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCaminarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, 110, 90));
-
-        btnViajar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnViajar.setForeground(new java.awt.Color(255, 255, 255));
-        btnViajar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/viajar32.png"))); // NOI18N
-        btnViajar.setToolTipText("VIAJAR [-50 Aburrimiento, -20 Energía]");
-        btnViajar.setContentAreaFilled(false);
-        btnViajar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnViajar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/viajar32.png"))); // NOI18N
-        btnViajar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/viajar48.png"))); // NOI18N
-        btnViajar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnViajar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViajarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnViajar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 310, 130, 110));
-
-        btnFutbol.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnFutbol.setForeground(new java.awt.Color(255, 255, 255));
-        btnFutbol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/futbo32.png"))); // NOI18N
-        btnFutbol.setToolTipText("FUTBOL [-60 Aburrimiento, -30 Energía]");
-        btnFutbol.setContentAreaFilled(false);
-        btnFutbol.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnFutbol.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/futbo32.png"))); // NOI18N
-        btnFutbol.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/futbo48.png"))); // NOI18N
-        btnFutbol.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnFutbol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFutbolActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnFutbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 260, 110, 90));
-
-        btnLava.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnLava.setForeground(new java.awt.Color(255, 255, 255));
-        btnLava.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lava32.png"))); // NOI18N
-        btnLava.setToolTipText("LAVA [Cura el hambre, +60 Energía]");
-        btnLava.setContentAreaFilled(false);
-        btnLava.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnLava.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lava32.png"))); // NOI18N
-        btnLava.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lava48.png"))); // NOI18N
-        btnLava.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnLava.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLavaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnLava, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 70, 70));
-
-        lblLava2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
-        getContentPane().add(lblLava2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 40, 30));
-
-        btnCarne.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnCarne.setForeground(new java.awt.Color(255, 255, 255));
-        btnCarne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carne32.png"))); // NOI18N
-        btnCarne.setToolTipText("CARNE [-50 Hambre, +15 Energía]");
-        btnCarne.setContentAreaFilled(false);
-        btnCarne.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCarne.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carne32.png"))); // NOI18N
-        btnCarne.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carne48.png"))); // NOI18N
-        btnCarne.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnCarne.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCarneActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 90, 70));
-
-        lblCarne2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
-        getContentPane().add(lblCarne2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 40, 30));
-
-        btnManzana.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnManzana.setForeground(new java.awt.Color(255, 255, 255));
-        btnManzana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manzana32.png"))); // NOI18N
-        btnManzana.setToolTipText("MANZANA [-5 Hambre, +1 Energía]");
-        btnManzana.setContentAreaFilled(false);
-        btnManzana.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnManzana.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manzana32.png"))); // NOI18N
-        btnManzana.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manzana48.png"))); // NOI18N
-        btnManzana.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnManzana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManzanaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnManzana, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 130, 110));
-
-        lblManzana2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
-        getContentPane().add(lblManzana2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 40, 70));
-
-        btnHuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnHuevo.setForeground(new java.awt.Color(255, 255, 255));
-        btnHuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/huevoFrito32.png"))); // NOI18N
-        btnHuevo.setToolTipText("HUEVO [-20 Hambre , +8 Energía]");
-        btnHuevo.setContentAreaFilled(false);
-        btnHuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnHuevo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/huevoFrito32.png"))); // NOI18N
-        btnHuevo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/huevoFrito48.png"))); // NOI18N
-        btnHuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnHuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHuevoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnHuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 130, 110));
-
-        lblHuevo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
-        getContentPane().add(lblHuevo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 40, 30));
-
-        btnGalleta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnGalleta.setForeground(new java.awt.Color(255, 255, 255));
-        btnGalleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/galleta32.png"))); // NOI18N
-        btnGalleta.setToolTipText("GALLETA [-10 Hambre, +3 Energía]");
-        btnGalleta.setContentAreaFilled(false);
-        btnGalleta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnGalleta.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/galleta32.png"))); // NOI18N
-        btnGalleta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/galleta48.png"))); // NOI18N
-        btnGalleta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnGalleta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGalletaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnGalleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 130, 110));
-
-        lblGalleta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
-        getContentPane().add(lblGalleta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 40, 30));
-
-        btnActividades2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnActividades2.setForeground(new java.awt.Color(255, 255, 255));
-        btnActividades2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades64.png"))); // NOI18N
-        btnActividades2.setText("ACTIVIDADES");
-        btnActividades2.setContentAreaFilled(false);
-        btnActividades2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnActividades2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades64.png"))); // NOI18N
-        btnActividades2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades72.png"))); // NOI18N
-        btnActividades2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnActividades2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActividades2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnActividades2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 140, 110));
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 130, 100));
 
         btnActividades.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnActividades.setForeground(new java.awt.Color(255, 255, 255));
@@ -621,12 +766,12 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnActividadesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 140, 110));
+        getContentPane().add(btnActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 470, 140, 110));
 
         lblEnergia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblEnergia.setForeground(new java.awt.Color(255, 255, 255));
         lblEnergia.setText("Energía");
-        getContentPane().add(lblEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
+        getContentPane().add(lblEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, -1, -1));
 
         lblNecesidades.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblNecesidades.setForeground(new java.awt.Color(255, 255, 255));
@@ -650,43 +795,53 @@ public class FrmMascota extends javax.swing.JFrame {
         getContentPane().add(lblJoven, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 190, 260));
 
         lblAdulto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/charizard_3.gif"))); // NOI18N
-        getContentPane().add(lblAdulto, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, -10, 360, 460));
+        getContentPane().add(lblAdulto, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 360, 450));
 
         lblNumAnnios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNumAnnios.setForeground(new java.awt.Color(255, 255, 255));
         lblNumAnnios.setText("1");
         getContentPane().add(lblNumAnnios, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 30, 30));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("MEDICAMENTO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
-
         lblAnnios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblAnnios.setForeground(new java.awt.Color(255, 255, 255));
         lblAnnios.setText("Años:");
         getContentPane().add(lblAnnios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 50, 30));
 
-        jpbEnergia.setBackground(new java.awt.Color(51, 51, 51));
-        jpbEnergia.setForeground(new java.awt.Color(255, 0, 0));
-        jpbEnergia.setBorderPainted(false);
-        jpbEnergia.setString("0 %");
-        getContentPane().add(jpbEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, -1, 20));
-
-        jpbNecesidades.setBackground(new java.awt.Color(51, 51, 51));
-        jpbNecesidades.setForeground(new java.awt.Color(255, 0, 0));
+        jpbNecesidades.setBackground(new java.awt.Color(255, 255, 255));
+        jpbNecesidades.setForeground(new java.awt.Color(0, 0, 0));
         jpbNecesidades.setBorderPainted(false);
-        getContentPane().add(jpbNecesidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 600, -1, 10));
+        jpbNecesidades.setStringPainted(true);
+        getContentPane().add(jpbNecesidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 600, -1, 20));
 
-        jpbHambre.setBackground(new java.awt.Color(51, 51, 51));
-        jpbHambre.setForeground(new java.awt.Color(255, 0, 0));
+        jpbHambre.setBackground(new java.awt.Color(255, 255, 255));
+        jpbHambre.setForeground(new java.awt.Color(0, 0, 0));
         jpbHambre.setBorderPainted(false);
-        getContentPane().add(jpbHambre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 600, -1, 10));
+        jpbHambre.setStringPainted(true);
+        getContentPane().add(jpbHambre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 600, -1, 20));
 
-        jpbAburrimiento.setBackground(new java.awt.Color(51, 51, 51));
-        jpbAburrimiento.setForeground(new java.awt.Color(255, 0, 0));
+        jpbAburrimiento.setBackground(new java.awt.Color(255, 255, 255));
+        jpbAburrimiento.setForeground(new java.awt.Color(0, 0, 0));
         jpbAburrimiento.setBorderPainted(false);
-        getContentPane().add(jpbAburrimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 600, -1, 10));
+        jpbAburrimiento.setString("0 %");
+        jpbAburrimiento.setStringPainted(true);
+        getContentPane().add(jpbAburrimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 600, -1, 20));
+
+        btnMedicamentos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnMedicamentos.setForeground(new java.awt.Color(255, 255, 255));
+        btnMedicamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botiquin64.png"))); // NOI18N
+        btnMedicamentos.setText("MEDICAMENTOS");
+        btnMedicamentos.setContentAreaFilled(false);
+        btnMedicamentos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMedicamentos.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botiquin64.png"))); // NOI18N
+        btnMedicamentos.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botiquin72.png"))); // NOI18N
+        btnMedicamentos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnMedicamentos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMedicamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMedicamentosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMedicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 80, 160, 110));
 
         lblNombre.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -696,6 +851,9 @@ public class FrmMascota extends javax.swing.JFrame {
         lblInformacionDe.setForeground(new java.awt.Color(255, 255, 255));
         lblInformacionDe.setText("Información de");
         getContentPane().add(lblInformacionDe, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 520, 200, 40));
+
+        jpbEnergia.setStringPainted(true);
+        getContentPane().add(jpbEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, 20));
 
         lblFondo.setForeground(new java.awt.Color(255, 255, 255));
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoMascota2.jpg"))); // NOI18N
@@ -760,15 +918,13 @@ public class FrmMascota extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLavaActionPerformed
 
     private void btnActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividadesActionPerformed
-        btnDormir.setVisible(true);
-        btnCaminar.setVisible(true);
-        btnNatacion.setVisible(true);
-        btnFutbol.setVisible(true);
-        btnViajar.setVisible(true);
-        btnBannio.setVisible(true);
-        btnActividades.setVisible(false);
-        btnActividades2.setVisible(true);
-        btnCerrar.setVisible(false);
+        if (this.jpActividades.isVisible() == false) {
+            this.jpActividades.setVisible(true);
+            btnCerrar.setVisible(false);
+        } else {
+            this.jpActividades.setVisible(false);
+            btnCerrar.setVisible(true);
+        }
     }//GEN-LAST:event_btnActividadesActionPerformed
 
     private void btnFutbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFutbolActionPerformed
@@ -777,6 +933,9 @@ public class FrmMascota extends javax.swing.JFrame {
         this.mostrarAburrimiento();
         FrmAnimActividad actividad = new FrmAnimActividad();
         actividad.setVisible(true);
+        btnFutbol.setVisible(false);
+        lblFutbol2.setVisible(true);
+        futbolTiempo.start();
     }//GEN-LAST:event_btnFutbolActionPerformed
 
     private void btnViajarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViajarActionPerformed
@@ -785,14 +944,20 @@ public class FrmMascota extends javax.swing.JFrame {
         this.mostrarAburrimiento();
         FrmAnimActividad actividad = new FrmAnimActividad();
         actividad.setVisible(true);
+        btnViajar.setVisible(false);
+        lblViajar2.setVisible(true);
+        viajarTiempo.start();
     }//GEN-LAST:event_btnViajarActionPerformed
 
     private void btnCaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaminarActionPerformed
-        dragon.realizarActividad(caminar);
+        dragon.realizarActividad(volar);
         this.mostarEnergia();
         this.mostrarAburrimiento();
         FrmAnimActividad actividad = new FrmAnimActividad();
         actividad.setVisible(true);
+        btnCaminar.setVisible(false);
+        lblVolar2.setVisible(true);
+        volarTiempo.start();
     }//GEN-LAST:event_btnCaminarActionPerformed
 
     private void btnDormirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDormirActionPerformed
@@ -801,6 +966,9 @@ public class FrmMascota extends javax.swing.JFrame {
         this.mostrarAburrimiento();
         FrmAnimDurmiendo durmiendo = new FrmAnimDurmiendo();
         durmiendo.setVisible(true);
+        btnBannio.setVisible(false);
+        lblBannio2.setVisible(true);
+        bannioTiempo.start();
     }//GEN-LAST:event_btnDormirActionPerformed
 
     private void btnNatacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNatacionActionPerformed
@@ -809,25 +977,23 @@ public class FrmMascota extends javax.swing.JFrame {
         this.mostrarAburrimiento();
         FrmAnimActividad actividad = new FrmAnimActividad();
         actividad.setVisible(true);
-    }//GEN-LAST:event_btnNatacionActionPerformed
-
-    private void btnActividades2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividades2ActionPerformed
-        btnDormir.setVisible(false);
-        btnCaminar.setVisible(false);
         btnNatacion.setVisible(false);
-        btnFutbol.setVisible(false);
-        btnViajar.setVisible(false);
-        btnBannio.setVisible(false);
-        btnActividades.setVisible(true);
-        btnActividades2.setVisible(false);
-        btnCerrar.setVisible(true);
-    }//GEN-LAST:event_btnActividades2ActionPerformed
+        lblNatacion2.setVisible(true);
+        natacionTiempo.start();
+    }//GEN-LAST:event_btnNatacionActionPerformed
 
     private void btnBannioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBannioActionPerformed
         dragon.setNecesidades(dragon.getNecesidades() - bannio.bajarNecesidades);
         FrmAnimCensura censura = new FrmAnimCensura();
         censura.setVisible(true);
         this.mostrarNecesidades();
+        btnBannio.setVisible(false);
+        lblBannio2.setVisible(true);
+        bannioTiempo.start();
+
+//        btnManzana.setVisible(false);
+//        lblManzana2.setVisible(true);
+//        manzanaTiempo.start();
     }//GEN-LAST:event_btnBannioActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -857,6 +1023,27 @@ public class FrmMascota extends javax.swing.JFrame {
         lblPocion2.setVisible(true);
         pocionTiempo.start();
     }//GEN-LAST:event_btnPocionActionPerformed
+
+    private void btnAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlimentosActionPerformed
+        if (this.jpAlimentos.isVisible() == false) {
+            this.jpAlimentos.setVisible(true);
+            btnMedicamentos.setVisible(false);
+        } else {
+            this.jpAlimentos.setVisible(false);
+            jpMedicamentos.setVisible(false);
+            btnMedicamentos.setVisible(true);
+        }
+
+    }//GEN-LAST:event_btnAlimentosActionPerformed
+
+    private void btnMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentosActionPerformed
+        if (this.jpMedicamentos.isVisible() == false) {
+            this.jpMedicamentos.setVisible(true);
+        } else {
+            this.jpMedicamentos.setVisible(false);
+            btnMedicamentos.setVisible(true);
+        }
+    }//GEN-LAST:event_btnMedicamentosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -895,7 +1082,7 @@ public class FrmMascota extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActividades;
-    private javax.swing.JButton btnActividades2;
+    private javax.swing.JButton btnAlimentos;
     private javax.swing.JButton btnBannio;
     private javax.swing.JButton btnCaminar;
     private javax.swing.JButton btnCarne;
@@ -906,11 +1093,13 @@ public class FrmMascota extends javax.swing.JFrame {
     private javax.swing.JButton btnHuevo;
     private javax.swing.JButton btnLava;
     private javax.swing.JButton btnManzana;
+    private javax.swing.JButton btnMedicamentos;
     private javax.swing.JButton btnNatacion;
     private javax.swing.JButton btnPocion;
     private javax.swing.JButton btnViajar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jpActividades;
+    private javax.swing.JPanel jpAlimentos;
+    private javax.swing.JPanel jpMedicamentos;
     private javax.swing.JProgressBar jpbAburrimiento;
     private javax.swing.JProgressBar jpbEnergia;
     private javax.swing.JProgressBar jpbHambre;
@@ -918,11 +1107,14 @@ public class FrmMascota extends javax.swing.JFrame {
     private javax.swing.JLabel lblAburrimiento;
     private javax.swing.JLabel lblAdulto;
     private javax.swing.JLabel lblAnnios;
+    private javax.swing.JLabel lblBannio2;
     private javax.swing.JLabel lblBebe;
     private javax.swing.JLabel lblCarne2;
+    private javax.swing.JLabel lblDormir2;
     private javax.swing.JLabel lblEnergia;
     private javax.swing.JLabel lblEnfermo;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblFutbol2;
     private javax.swing.JLabel lblGalleta2;
     private javax.swing.JLabel lblHambre;
     private javax.swing.JLabel lblHuevo2;
@@ -930,10 +1122,13 @@ public class FrmMascota extends javax.swing.JFrame {
     private javax.swing.JLabel lblJoven;
     private javax.swing.JLabel lblLava2;
     private javax.swing.JLabel lblManzana2;
+    private javax.swing.JLabel lblNatacion2;
     private javax.swing.JLabel lblNecesidades;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumAnnios;
     private javax.swing.JLabel lblPocion2;
     private javax.swing.JLabel lblSaludable;
+    private javax.swing.JLabel lblViajar2;
+    private javax.swing.JLabel lblVolar2;
     // End of variables declaration//GEN-END:variables
 }
