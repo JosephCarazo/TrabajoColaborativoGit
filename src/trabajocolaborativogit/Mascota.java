@@ -141,7 +141,7 @@ public class Mascota {
     }
 
     public Mascota() {
-        this("Default", 0, 0, 0, 100, 0, true, false);
+        this("Default", 0, 100, 0, 100, 0, false, false);
     }
 
     public void alimentar(Alimentos alimento) {
@@ -166,6 +166,10 @@ public class Mascota {
     public void realizarActividad(Actividades actividad) {
         this.setAburrimiento(this.getAburrimiento() - actividad.cantidadAburrimiento);
         this.setEnergia(this.getEnergia() - actividad.cantidadEnergia);
+    }
+    
+    public void irAlBannio(Bannio bannio){
+        this.setNecesidades(this.getNecesidades() - bannio.bajarNecesidades);
     }
 
     @Override

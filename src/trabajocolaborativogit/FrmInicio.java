@@ -4,12 +4,16 @@
  */
 package trabajocolaborativogit;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 /**
  *
  * @author Fabricio
  */
 public class FrmInicio extends javax.swing.JFrame {
+
+    private Clip clip;
 
     /**
      * Creates new form FrmInicio
@@ -37,6 +41,7 @@ public class FrmInicio extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblStart.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -70,6 +75,12 @@ public class FrmInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        try {
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream("Sonidos/sonidoStart.wav")));
+            clip.start();
+        } catch (Exception e) {
+        }
         FrmPresentacion presentacion = new FrmPresentacion();
         presentacion.setVisible(true);
         this.dispose();

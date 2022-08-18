@@ -25,6 +25,8 @@ public class FrmMascota extends javax.swing.JFrame {
     Actividades futbol;
     Actividades caminar;
     Actividades viajar;
+    Bannio bannio;
+    Medicamento pocion;
 
     /**
      * Creates new form FrmMascota
@@ -32,33 +34,38 @@ public class FrmMascota extends javax.swing.JFrame {
     public FrmMascota() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
         galleta = new Galleta();
         manzana = new Manzana();
         huevo = new Huevo();
         carne = new Carne();
         lava = new Lava();
         dragon = new Mascota();
-        
+
         natacion = new Natacion();
         dormir = new Dormir();
         futbol = new Futbol();
-        caminar = new Caminar();
+        caminar = new Volar();
         viajar = new Viajar();
-        
-        btnLava.setVisible(false);
-        btnHuevo.setVisible(false);
-        btnCarne.setVisible(false);
-        btnManzana.setVisible(false);
-        btnGalleta.setVisible(false);
-        btnAlimentos2.setVisible(false);
+        bannio = new Bannio();
+
+        pocion = new Pocion();
+
+        lblLava2.setVisible(false);
+        lblHuevo2.setVisible(false);
+        lblCarne2.setVisible(false);
+        lblManzana2.setVisible(false);
+        lblGalleta2.setVisible(false);
 
         btnDormir.setVisible(false);
         btnCaminar.setVisible(false);
         btnNatacion.setVisible(false);
         btnFutbol.setVisible(false);
         btnViajar.setVisible(false);
+        btnBannio.setVisible(false);
         btnActividades2.setVisible(false);
+
+        lblPocion2.setVisible(false);
 
         lblJoven.setVisible(false);
         lblAdulto.setVisible(false);
@@ -74,6 +81,7 @@ public class FrmMascota extends javax.swing.JFrame {
         aburrimiento.start();
         necesidades.start();
         energia.start();
+        muerte.start();
     }
 
     Timer hambre = new Timer(5000, new ActionListener() {//METODO TIMER
@@ -100,9 +108,9 @@ public class FrmMascota extends javax.swing.JFrame {
         }
     });
 
-    Timer edad = new Timer(3000, new ActionListener() {//METODO TIMER
+    Timer edad = new Timer(50000, new ActionListener() {//METODO TIMER
         public void actionPerformed(ActionEvent e) {
-            aumentarDia();
+            aumentarEdad();
         }
     });
 
@@ -111,7 +119,110 @@ public class FrmMascota extends javax.swing.JFrame {
             mostrarSalud();
         }
     });
-    
+
+    Timer muerte = new Timer(1, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            morir();
+            muerte.stop();
+        }
+    });
+
+    Timer pocionTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarPocion();
+        }
+    });
+
+    Timer lavaTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarLava();
+        }
+    });
+
+    Timer carneTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarCarne();
+        }
+    });
+
+    Timer huevoTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarHuevo();
+        }
+    });
+
+    Timer galletaTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarGalleta();
+        }
+    });
+
+    Timer manzanaTiempo = new Timer(1000, new ActionListener() {//METODO TIMER
+        public void actionPerformed(ActionEvent e) {
+            ocultarManzana();
+        }
+    });
+
+    public void ocultarPocion() {
+        pocion.setTiempo(pocion.getTiempo() + 1);
+        if (pocion.getTiempo() == 60) {
+            btnPocion.setVisible(true);
+            lblPocion2.setVisible(false);
+            pocionTiempo.stop();
+            pocion.setTiempo(0);
+        }
+    }
+
+    public void ocultarLava() {
+        lava.setTiempo(lava.getTiempo() + 1);
+        if (lava.getTiempo() == 30) {
+            btnLava.setVisible(true);
+            lblLava2.setVisible(false);
+            lavaTiempo.stop();
+            lava.setTiempo(0);
+        }
+    }
+
+    public void ocultarCarne() {
+        carne.setTiempo(carne.getTiempo() + 1);
+        if (carne.getTiempo() == 20) {
+            btnCarne.setVisible(true);
+            lblCarne2.setVisible(false);
+            carneTiempo.stop();
+            carne.setTiempo(0);
+        }
+    }
+
+    public void ocultarHuevo() {
+        huevo.setTiempo(huevo.getTiempo() + 1);
+        if (huevo.getTiempo() == 17) {
+            btnHuevo.setVisible(true);
+            lblHuevo2.setVisible(false);
+            huevoTiempo.stop();
+            huevo.setTiempo(0);
+        }
+    }
+
+    public void ocultarGalleta() {
+        galleta.setTiempo(galleta.getTiempo() + 1);
+        if (galleta.getTiempo() == 10) {
+            btnGalleta.setVisible(true);
+            lblGalleta2.setVisible(false);
+            galletaTiempo.stop();
+            galleta.setTiempo(0);
+        }
+    }
+
+    public void ocultarManzana() {
+        manzana.setTiempo(manzana.getTiempo() + 1);
+        if (manzana.getTiempo() == 6) {
+            btnManzana.setVisible(true);
+            lblManzana2.setVisible(false);
+            manzanaTiempo.stop();
+            manzana.setTiempo(0);
+        }
+    }
+
     public void aumentarHambre() {
         dragon.setHambre(dragon.getHambre() + 1);
         this.mostrarHambre();
@@ -132,7 +243,7 @@ public class FrmMascota extends javax.swing.JFrame {
         this.mostrarNecesidades();
     }
 
-    public void aumentarDia() {
+    public void aumentarEdad() {
         dragon.setEdad(dragon.getEdad() + 1);
         if (dragon.getEdad() == 12) {
             lblBebe.setVisible(false);
@@ -165,14 +276,28 @@ public class FrmMascota extends javax.swing.JFrame {
     public void mostrarAburrimiento() {
         jpbAburrimiento.setValue(dragon.getAburrimiento());
     }
-    
-    public void mostrarSalud(){
+
+    public void mostrarSalud() {
         if (dragon.getAburrimiento() >= 90 || jpbEnergia.getValue() <= 10 || dragon.getHambre() >= 90 || dragon.getNecesidades() >= 90) {
             lblSaludable.setVisible(false);
             lblEnfermo.setVisible(true);
-        }else{
+        } else {
             lblEnfermo.setVisible(false);
             lblSaludable.setVisible(true);
+        }
+    }
+
+    public void morir() {
+        FrmMorir muere = new FrmMorir();
+        if (dragon.getAburrimiento() >= 90 && dragon.getHambre() >= 90) {
+            muere.setVisible(true);
+            this.dispose();
+        } else if (dragon.getAburrimiento() >= 90 && dragon.getEnergia() <= 10) {
+            muere.setVisible(true);
+            this.dispose();
+        } else if (dragon.getNecesidades() >= 90 && dragon.getAburrimiento() >= 90) {
+            muere.setVisible(true);
+            this.dispose();
         }
     }
 
@@ -187,20 +312,28 @@ public class FrmMascota extends javax.swing.JFrame {
 
         lblSaludable = new javax.swing.JLabel();
         lblEnfermo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JButton();
+        btnBannio = new javax.swing.JButton();
+        btnPocion = new javax.swing.JButton();
+        lblPocion2 = new javax.swing.JLabel();
         btnNatacion = new javax.swing.JButton();
         btnDormir = new javax.swing.JButton();
         btnCaminar = new javax.swing.JButton();
         btnViajar = new javax.swing.JButton();
         btnFutbol = new javax.swing.JButton();
         btnLava = new javax.swing.JButton();
+        lblLava2 = new javax.swing.JLabel();
         btnCarne = new javax.swing.JButton();
+        lblCarne2 = new javax.swing.JLabel();
         btnManzana = new javax.swing.JButton();
+        lblManzana2 = new javax.swing.JLabel();
         btnHuevo = new javax.swing.JButton();
+        lblHuevo2 = new javax.swing.JLabel();
         btnGalleta = new javax.swing.JButton();
+        lblGalleta2 = new javax.swing.JLabel();
         btnActividades2 = new javax.swing.JButton();
         btnActividades = new javax.swing.JButton();
-        btnAlimentos2 = new javax.swing.JButton();
-        btnAlimentos = new javax.swing.JButton();
         lblEnergia = new javax.swing.JLabel();
         lblNecesidades = new javax.swing.JLabel();
         lblHambre = new javax.swing.JLabel();
@@ -209,6 +342,7 @@ public class FrmMascota extends javax.swing.JFrame {
         lblJoven = new javax.swing.JLabel();
         lblAdulto = new javax.swing.JLabel();
         lblNumAnnios = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         lblAnnios = new javax.swing.JLabel();
         jpbEnergia = new javax.swing.JProgressBar();
         jpbNecesidades = new javax.swing.JProgressBar();
@@ -219,6 +353,7 @@ public class FrmMascota extends javax.swing.JFrame {
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSaludable.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -230,6 +365,56 @@ public class FrmMascota extends javax.swing.JFrame {
         lblEnfermo.setForeground(new java.awt.Color(255, 51, 51));
         lblEnfermo.setText("Enfermo");
         getContentPane().add(lblEnfermo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 90, 20));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("ALIMENTOS");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar48.png"))); // NOI18N
+        btnCerrar.setText("Cerrar juego");
+        btnCerrar.setContentAreaFilled(false);
+        btnCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar48.png"))); // NOI18N
+        btnCerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar58.png"))); // NOI18N
+        btnCerrar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnCerrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, -1, 100));
+
+        btnBannio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBannio.setForeground(new java.awt.Color(255, 255, 255));
+        btnBannio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baño32.png"))); // NOI18N
+        btnBannio.setToolTipText("BAÑO [Quita las necesidades]");
+        btnBannio.setContentAreaFilled(false);
+        btnBannio.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baño32.png"))); // NOI18N
+        btnBannio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/baño48.png"))); // NOI18N
+        btnBannio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBannioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBannio, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 50, -1));
+
+        btnPocion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pocion32.png"))); // NOI18N
+        btnPocion.setContentAreaFilled(false);
+        btnPocion.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pocion32.png"))); // NOI18N
+        btnPocion.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pocion48.png"))); // NOI18N
+        btnPocion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPocionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPocion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 50, 70));
+
+        lblPocion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        getContentPane().add(lblPocion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 40, 70));
 
         btnNatacion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnNatacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,12 +450,12 @@ public class FrmMascota extends javax.swing.JFrame {
 
         btnCaminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCaminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/caminar32.png"))); // NOI18N
-        btnCaminar.setToolTipText("CAMINAR [-10 Aburrimiento, -3 Energía]");
+        btnCaminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alas32.png"))); // NOI18N
+        btnCaminar.setToolTipText("VOLAR [-10 Aburrimiento, -3 Energía]");
         btnCaminar.setContentAreaFilled(false);
         btnCaminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCaminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/caminar32.png"))); // NOI18N
-        btnCaminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/caminar48.png"))); // NOI18N
+        btnCaminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alas32.png"))); // NOI18N
+        btnCaminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alas48.png"))); // NOI18N
         btnCaminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnCaminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,7 +510,10 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnLavaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLava, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 110));
+        getContentPane().add(btnLava, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 70, 70));
+
+        lblLava2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        getContentPane().add(lblLava2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 40, 30));
 
         btnCarne.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCarne.setForeground(new java.awt.Color(255, 255, 255));
@@ -341,7 +529,10 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnCarneActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, 110));
+        getContentPane().add(btnCarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 90, 70));
+
+        lblCarne2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        getContentPane().add(lblCarne2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 40, 30));
 
         btnManzana.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnManzana.setForeground(new java.awt.Color(255, 255, 255));
@@ -357,7 +548,10 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnManzanaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnManzana, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 130, 110));
+        getContentPane().add(btnManzana, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 130, 110));
+
+        lblManzana2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        getContentPane().add(lblManzana2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 40, 70));
 
         btnHuevo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHuevo.setForeground(new java.awt.Color(255, 255, 255));
@@ -373,7 +567,10 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnHuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, 110));
+        getContentPane().add(btnHuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 130, 110));
+
+        lblHuevo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        getContentPane().add(lblHuevo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 40, 30));
 
         btnGalleta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnGalleta.setForeground(new java.awt.Color(255, 255, 255));
@@ -389,16 +586,19 @@ public class FrmMascota extends javax.swing.JFrame {
                 btnGalletaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGalleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 130, 110));
+        getContentPane().add(btnGalleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 130, 110));
+
+        lblGalleta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/equis32.png"))); // NOI18N
+        getContentPane().add(lblGalleta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 40, 30));
 
         btnActividades2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnActividades2.setForeground(new java.awt.Color(255, 255, 255));
-        btnActividades2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades48.png"))); // NOI18N
+        btnActividades2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades64.png"))); // NOI18N
         btnActividades2.setText("ACTIVIDADES");
         btnActividades2.setContentAreaFilled(false);
         btnActividades2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnActividades2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades48.png"))); // NOI18N
-        btnActividades2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades64.png"))); // NOI18N
+        btnActividades2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades64.png"))); // NOI18N
+        btnActividades2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades72.png"))); // NOI18N
         btnActividades2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnActividades2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -409,12 +609,12 @@ public class FrmMascota extends javax.swing.JFrame {
 
         btnActividades.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnActividades.setForeground(new java.awt.Color(255, 255, 255));
-        btnActividades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades48.png"))); // NOI18N
+        btnActividades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades64.png"))); // NOI18N
         btnActividades.setText("ACTIVIDADES");
         btnActividades.setContentAreaFilled(false);
         btnActividades.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnActividades.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades48.png"))); // NOI18N
-        btnActividades.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades64.png"))); // NOI18N
+        btnActividades.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades64.png"))); // NOI18N
+        btnActividades.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actividades72.png"))); // NOI18N
         btnActividades.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnActividades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -423,42 +623,10 @@ public class FrmMascota extends javax.swing.JFrame {
         });
         getContentPane().add(btnActividades, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 140, 110));
 
-        btnAlimentos2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnAlimentos2.setForeground(new java.awt.Color(255, 255, 255));
-        btnAlimentos2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alimentos64.png"))); // NOI18N
-        btnAlimentos2.setText("ALIMENTOS");
-        btnAlimentos2.setContentAreaFilled(false);
-        btnAlimentos2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAlimentos2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alimentos64.png"))); // NOI18N
-        btnAlimentos2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alimentos72.png"))); // NOI18N
-        btnAlimentos2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAlimentos2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlimentos2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAlimentos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 130, 110));
-
-        btnAlimentos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnAlimentos.setForeground(new java.awt.Color(255, 255, 255));
-        btnAlimentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alimentos64.png"))); // NOI18N
-        btnAlimentos.setText("ALIMENTOS");
-        btnAlimentos.setContentAreaFilled(false);
-        btnAlimentos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAlimentos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alimentos64.png"))); // NOI18N
-        btnAlimentos.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alimentos72.png"))); // NOI18N
-        btnAlimentos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAlimentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlimentosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAlimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 130, 110));
-
         lblEnergia.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblEnergia.setForeground(new java.awt.Color(255, 255, 255));
         lblEnergia.setText("Energía");
-        getContentPane().add(lblEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, -1, -1));
+        getContentPane().add(lblEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
 
         lblNecesidades.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblNecesidades.setForeground(new java.awt.Color(255, 255, 255));
@@ -482,12 +650,17 @@ public class FrmMascota extends javax.swing.JFrame {
         getContentPane().add(lblJoven, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 190, 260));
 
         lblAdulto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/charizard_3.gif"))); // NOI18N
-        getContentPane().add(lblAdulto, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, -20, 360, 460));
+        getContentPane().add(lblAdulto, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, -10, 360, 460));
 
         lblNumAnnios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNumAnnios.setForeground(new java.awt.Color(255, 255, 255));
         lblNumAnnios.setText("1");
         getContentPane().add(lblNumAnnios, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 30, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("MEDICAMENTO");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
 
         lblAnnios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblAnnios.setForeground(new java.awt.Color(255, 255, 255));
@@ -498,7 +671,7 @@ public class FrmMascota extends javax.swing.JFrame {
         jpbEnergia.setForeground(new java.awt.Color(255, 0, 0));
         jpbEnergia.setBorderPainted(false);
         jpbEnergia.setString("0 %");
-        getContentPane().add(jpbEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
+        getContentPane().add(jpbEnergia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, -1, 20));
 
         jpbNecesidades.setBackground(new java.awt.Color(51, 51, 51));
         jpbNecesidades.setForeground(new java.awt.Color(255, 0, 0));
@@ -531,55 +704,60 @@ public class FrmMascota extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlimentosActionPerformed
-        btnLava.setVisible(true);
-        btnHuevo.setVisible(true);
-        btnCarne.setVisible(true);
-        btnManzana.setVisible(true);
-        btnGalleta.setVisible(true);
-        btnAlimentos.setVisible(false);
-        btnAlimentos2.setVisible(true);
-    }//GEN-LAST:event_btnAlimentosActionPerformed
-
     private void btnGalletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGalletaActionPerformed
         dragon.alimentar(galleta);
         this.mostrarHambre();
         this.mostarEnergia();
+        FrmComiendo comiendo = new FrmComiendo();
+        comiendo.setVisible(true);
+        btnGalleta.setVisible(false);
+        lblGalleta2.setVisible(true);
+        galletaTiempo.start();
     }//GEN-LAST:event_btnGalletaActionPerformed
 
     private void btnHuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuevoActionPerformed
         dragon.alimentar(huevo);
         this.mostrarHambre();
         this.mostarEnergia();
+        FrmComiendo comiendo = new FrmComiendo();
+        comiendo.setVisible(true);
+        btnHuevo.setVisible(false);
+        lblHuevo2.setVisible(true);
+        huevoTiempo.start();
     }//GEN-LAST:event_btnHuevoActionPerformed
 
     private void btnManzanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManzanaActionPerformed
         dragon.alimentar(manzana);
         this.mostrarHambre();
         this.mostarEnergia();
+        FrmComiendo comiendo = new FrmComiendo();
+        comiendo.setVisible(true);
+        btnManzana.setVisible(false);
+        lblManzana2.setVisible(true);
+        manzanaTiempo.start();
     }//GEN-LAST:event_btnManzanaActionPerformed
 
     private void btnCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarneActionPerformed
         dragon.alimentar(carne);
         this.mostrarHambre();
         this.mostarEnergia();
+        FrmComiendo comiendo = new FrmComiendo();
+        comiendo.setVisible(true);
+        btnCarne.setVisible(false);
+        lblCarne2.setVisible(true);
+        carneTiempo.start();
     }//GEN-LAST:event_btnCarneActionPerformed
 
     private void btnLavaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLavaActionPerformed
         dragon.alimentar(lava);
         this.mostrarHambre();
         this.mostarEnergia();
-    }//GEN-LAST:event_btnLavaActionPerformed
-
-    private void btnAlimentos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlimentos2ActionPerformed
+        FrmComiendo comiendo = new FrmComiendo();
+        comiendo.setVisible(true);
         btnLava.setVisible(false);
-        btnHuevo.setVisible(false);
-        btnCarne.setVisible(false);
-        btnManzana.setVisible(false);
-        btnGalleta.setVisible(false);
-        btnAlimentos2.setVisible(false);
-        btnAlimentos.setVisible(true);
-    }//GEN-LAST:event_btnAlimentos2ActionPerformed
+        lblLava2.setVisible(true);
+        lavaTiempo.start();
+    }//GEN-LAST:event_btnLavaActionPerformed
 
     private void btnActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividadesActionPerformed
         btnDormir.setVisible(true);
@@ -587,38 +765,50 @@ public class FrmMascota extends javax.swing.JFrame {
         btnNatacion.setVisible(true);
         btnFutbol.setVisible(true);
         btnViajar.setVisible(true);
+        btnBannio.setVisible(true);
         btnActividades.setVisible(false);
         btnActividades2.setVisible(true);
+        btnCerrar.setVisible(false);
     }//GEN-LAST:event_btnActividadesActionPerformed
 
     private void btnFutbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFutbolActionPerformed
         dragon.realizarActividad(futbol);
         this.mostarEnergia();
         this.mostrarAburrimiento();
+        FrmAnimActividad actividad = new FrmAnimActividad();
+        actividad.setVisible(true);
     }//GEN-LAST:event_btnFutbolActionPerformed
 
     private void btnViajarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViajarActionPerformed
         dragon.realizarActividad(viajar);
         this.mostarEnergia();
         this.mostrarAburrimiento();
+        FrmAnimActividad actividad = new FrmAnimActividad();
+        actividad.setVisible(true);
     }//GEN-LAST:event_btnViajarActionPerformed
 
     private void btnCaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaminarActionPerformed
         dragon.realizarActividad(caminar);
         this.mostarEnergia();
         this.mostrarAburrimiento();
+        FrmAnimActividad actividad = new FrmAnimActividad();
+        actividad.setVisible(true);
     }//GEN-LAST:event_btnCaminarActionPerformed
 
     private void btnDormirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDormirActionPerformed
         dragon.realizarActividad(dormir);
         this.mostarEnergia();
         this.mostrarAburrimiento();
+        FrmAnimDurmiendo durmiendo = new FrmAnimDurmiendo();
+        durmiendo.setVisible(true);
     }//GEN-LAST:event_btnDormirActionPerformed
 
     private void btnNatacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNatacionActionPerformed
         dragon.realizarActividad(natacion);
         this.mostarEnergia();
         this.mostrarAburrimiento();
+        FrmAnimActividad actividad = new FrmAnimActividad();
+        actividad.setVisible(true);
     }//GEN-LAST:event_btnNatacionActionPerformed
 
     private void btnActividades2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividades2ActionPerformed
@@ -627,9 +817,46 @@ public class FrmMascota extends javax.swing.JFrame {
         btnNatacion.setVisible(false);
         btnFutbol.setVisible(false);
         btnViajar.setVisible(false);
+        btnBannio.setVisible(false);
         btnActividades.setVisible(true);
         btnActividades2.setVisible(false);
+        btnCerrar.setVisible(true);
     }//GEN-LAST:event_btnActividades2ActionPerformed
+
+    private void btnBannioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBannioActionPerformed
+        dragon.setNecesidades(dragon.getNecesidades() - bannio.bajarNecesidades);
+        FrmAnimCensura censura = new FrmAnimCensura();
+        censura.setVisible(true);
+        this.mostrarNecesidades();
+    }//GEN-LAST:event_btnBannioActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void btnPocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPocionActionPerformed
+        if (dragon.getAburrimiento() >= 90) {
+            dragon.setAburrimiento(dragon.getAburrimiento() - 20);
+        }
+        if (dragon.getEnergia() <= 10) {
+            dragon.setEnergia(dragon.getEnergia() + 20);
+        }
+        if (dragon.getHambre() >= 90) {
+            dragon.setHambre(dragon.getHambre() - 20);
+        }
+        if (dragon.getNecesidades() >= 90) {
+            dragon.setNecesidades(dragon.getNecesidades() - 20);
+        }
+        this.mostrarAburrimiento();
+        this.mostrarHambre();
+        this.mostarEnergia();
+        this.mostrarNecesidades();
+        FrmCurandose curandose = new FrmCurandose();
+        curandose.setVisible(true);
+        btnPocion.setVisible(false);
+        lblPocion2.setVisible(true);
+        pocionTiempo.start();
+    }//GEN-LAST:event_btnPocionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -669,10 +896,10 @@ public class FrmMascota extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActividades;
     private javax.swing.JButton btnActividades2;
-    private javax.swing.JButton btnAlimentos;
-    private javax.swing.JButton btnAlimentos2;
+    private javax.swing.JButton btnBannio;
     private javax.swing.JButton btnCaminar;
     private javax.swing.JButton btnCarne;
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnDormir;
     private javax.swing.JButton btnFutbol;
     private javax.swing.JButton btnGalleta;
@@ -680,7 +907,10 @@ public class FrmMascota extends javax.swing.JFrame {
     private javax.swing.JButton btnLava;
     private javax.swing.JButton btnManzana;
     private javax.swing.JButton btnNatacion;
+    private javax.swing.JButton btnPocion;
     private javax.swing.JButton btnViajar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JProgressBar jpbAburrimiento;
     private javax.swing.JProgressBar jpbEnergia;
     private javax.swing.JProgressBar jpbHambre;
@@ -689,15 +919,21 @@ public class FrmMascota extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdulto;
     private javax.swing.JLabel lblAnnios;
     private javax.swing.JLabel lblBebe;
+    private javax.swing.JLabel lblCarne2;
     private javax.swing.JLabel lblEnergia;
     private javax.swing.JLabel lblEnfermo;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblGalleta2;
     private javax.swing.JLabel lblHambre;
+    private javax.swing.JLabel lblHuevo2;
     private javax.swing.JLabel lblInformacionDe;
     private javax.swing.JLabel lblJoven;
+    private javax.swing.JLabel lblLava2;
+    private javax.swing.JLabel lblManzana2;
     private javax.swing.JLabel lblNecesidades;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumAnnios;
+    private javax.swing.JLabel lblPocion2;
     private javax.swing.JLabel lblSaludable;
     // End of variables declaration//GEN-END:variables
 }

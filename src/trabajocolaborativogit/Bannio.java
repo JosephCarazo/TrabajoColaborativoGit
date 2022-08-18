@@ -8,13 +8,15 @@ package trabajocolaborativogit;
  *
  * @author josep
  */
-public class Caminar extends Actividades {
+public class Bannio extends Actividades {
+    protected int bajarNecesidades;
 
-    public Caminar(int cantidadAburrimiento, int cantidadEnergia, int tiempo) {
+    public Bannio(int bajarNecesidades, int cantidadAburrimiento, int cantidadEnergia, int tiempo) {
         super(cantidadAburrimiento, cantidadEnergia, tiempo);
+        this.bajarNecesidades = bajarNecesidades;
     }
-
-    public Caminar() {
-        this(-10, -3, 0);
+    
+    public Bannio(){
+        this(100, 0, 0, 0);
     }
 }

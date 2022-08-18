@@ -101,6 +101,7 @@ public class FrmPresentacion extends javax.swing.JFrame {
     private void btnSiguiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguiente2ActionPerformed
         FrmHuevo huevo = new FrmHuevo();
         huevo.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSiguiente2ActionPerformed
 
     /**
