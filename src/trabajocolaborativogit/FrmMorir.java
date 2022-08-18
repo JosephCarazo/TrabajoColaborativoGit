@@ -19,7 +19,7 @@ public class FrmMorir extends javax.swing.JFrame {
     public FrmMorir() {
         initComponents();
         this.setLocationRelativeTo(null);
-//        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
+        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
         Clip clip;
         try {
             clip = AudioSystem.getClip();
