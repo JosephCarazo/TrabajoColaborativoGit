@@ -4,12 +4,15 @@
  */
 package trabajocolaborativogit;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 /**
  *
  * @author josep
  */
 public class FrmHuevo extends javax.swing.JFrame {
-
+    private Clip clip;
     /**
      * Creates new form FrmPrincipal
      */
@@ -56,7 +59,7 @@ public class FrmHuevo extends javax.swing.JFrame {
                 btnHuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnHuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, -1, 370));
+        getContentPane().add(btnHuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, 240));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoHuevo.jpg"))); // NOI18N
         getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 650));
@@ -65,6 +68,13 @@ public class FrmHuevo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuevoActionPerformed
+        try {
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/Sonidos/romperHuevo.wav")));
+            clip.start();
+        } catch (Exception e) {
+        }
+
         FrmPrincipal principal = new FrmPrincipal();
         FrmInicio inicio = new FrmInicio();
         

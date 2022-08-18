@@ -77,7 +77,7 @@ public class FrmInicio extends javax.swing.JFrame {
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         try {
             clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream("Sonidos/sonidoStart.wav")));
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/Sonidos/sonidoStart.wav")));
             clip.start();
         } catch (Exception e) {
         }

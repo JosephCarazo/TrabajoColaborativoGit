@@ -4,6 +4,8 @@
  */
 package trabajocolaborativogit;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +15,7 @@ import javax.swing.JOptionPane;
 public class FrmPrincipal extends javax.swing.JFrame {
 
     Mascota dragon = new Mascota();
+    private Clip clip;
 
     /**
      * Creates new form FrmPrincipal
@@ -225,6 +228,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSiguiente4ActionPerformed
 
     private void btnVamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVamosActionPerformed
+        try {
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/Sonidos/sonidoStart.wav")));
+            clip.start();
+        } catch (Exception e) {
+        }
         FrmMascota mascota = new FrmMascota();
         mascota.setVisible(true);
         this.dispose();

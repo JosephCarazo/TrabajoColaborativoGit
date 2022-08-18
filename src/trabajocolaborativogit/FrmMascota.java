@@ -70,7 +70,7 @@ public class FrmMascota extends javax.swing.JFrame {
         lblJoven.setVisible(false);
         lblAdulto.setVisible(false);
         lblEnfermo.setVisible(false);
-//        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
+        lblNombre.setText(FrmPrincipal.txtNombreTemp.getText());
         jpbAburrimiento.setValue(dragon.getAburrimiento());
         jpbHambre.setValue(dragon.getHambre());
         jpbNecesidades.setValue(dragon.getNecesidades());
@@ -108,7 +108,7 @@ public class FrmMascota extends javax.swing.JFrame {
         }
     });
 
-    Timer edad = new Timer(50000, new ActionListener() {//METODO TIMER
+    Timer edad = new Timer(1000, new ActionListener() {//METODO TIMER
         public void actionPerformed(ActionEvent e) {
             aumentarEdad();
         }
